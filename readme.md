@@ -5,7 +5,7 @@ Intended to be a universal keyboard (across all languages) by modeling the symme
 Custom Keymaps
 --------------
 Create your own design from:
-keymap/template.php
+* keymap/template.php
 
 Any html can be used for the individual keys including 24px by 24px images.
 
@@ -17,3 +17,7 @@ Requirements
 ------------
 * php
 * apache
+
+Install
+-------
+cp config.sample.php config.php
