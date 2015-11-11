@@ -4,7 +4,7 @@ Intended to be a universal keyboard (across all languages) by modeling the symme
 
 A 20 key one-handed keyboard (16 finger keys 3 thumb keys and 1 swap key).
 
-Allows typing of all printable ASCII characters (with room to spare) and has 84 less keys than a standard 104-key Windows keyboard (almost 80% less keys).
+Allows typing of all printable ASCII characters (with room to spare) and has 84 less keys than a standard 104-key Windows keyboard (about 80% less keys).
 
 Pairing 2 "1 Handed" keyboards facilitates 2 handed typing for faster operation. 2 handed typing utilizes 32 finger keys 6 thumb keys and does not require a swap key.
 
