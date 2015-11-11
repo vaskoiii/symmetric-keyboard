@@ -86,12 +86,14 @@ function ptswap($id) { ?>
 	<title>Symmetric Keyboard</title>
 <style>
 	#choose_mode,
+	#choose_keyboard,
 	#choose_keymap {
 		border: none;
 		text-align: center;
 		width: 100%;
 		}
 		#choose_mode a,
+		#choose_keyboard a,
 		#choose_keymap a {
 			margin: 0px 5px;
 			}
@@ -107,6 +109,7 @@ function ptswap($id) { ?>
 		#clear ,
 		#option ,
 		#cswap {
+			border: 1px dotted;
 			color: #777;
 			background: #ccc;
 			position: absolute;
@@ -117,11 +120,11 @@ function ptswap($id) { ?>
 			}
 		#cswap {
 			top: 256px;
+			border: 1px solid;
 			}
 		#option {
 			top: 480px;
 			margin-bottom: 20px;
-			background: none;
 			}
 		
 </style>
@@ -453,7 +456,7 @@ function ptswap($id) { ?>
 
 <span id="option_block" style="display: block; margin-top: 110px;">
 	<script>
-		function choose_mode($mode) {
+		function choose_keyboard($mode) {
 			switch ($mode) {
 				case 'left':
 					did('left').style.display = 'inline-block';
@@ -475,17 +478,22 @@ function ptswap($id) { ?>
 			}
 		}
 	</script>
-	<p id="choose_mode">
-		change mode:
-		<a href="javascript: choose_mode('left')">left_only</a>
-		<a href="javascript: choose_mode('right')">right_only</a>
-		<a href="javascript: choose_mode('both')">both</a>
+	<p id="choose_keyboard">
+		change keyboard:
+		<a href="javascript: choose_keyboard('left')">left_only</a>
+		<a href="javascript: choose_keyboard('right')">right_only</a>
+		<a href="javascript: choose_keyboard('both')">both</a>
 	</p>
 	<p id="choose_keymap">
 		change keymap: <?
 		foreach ($config['keymap'] as $k1 => $v1) { ?> 
 			<a href="<?= htmlentities($_SERVER['PHP_SELF']); ?>?keymap=<?= htmlentities($v1); ?>"><?= htmlentities($v1); ?></a><?
 		} ?> 
+	</p>
+	<p id="choose_mode">
+		change mode:
+		<a href="javascript: alert('currently the only available mode');">insert</a>
+		<a href="javascript: alert('command mode not yet implemented')">command</a>
 	</p>
 	<p><small>Supported Browsers are in Green at: <nobr><a href="http://caniuse.com/touch">http://caniuse.com/touch</a></nobr></small></p>
 </span>
@@ -558,7 +566,7 @@ function ptswap($id) { ?>
 </script>
 <script>
 	if (screen.width <= 840) {
-		choose_mode('left');
+		choose_keyboard('left');
 	}
 </script>
 <style>
