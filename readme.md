@@ -8,7 +8,7 @@ Allows typing of all printable ASCII characters (with room to spare) and has 84 
 
 Pairing 2 "1 Handed" keyboards facilitates 2 handed typing for faster operation. 2 handed typing utilizes 32 finger keys 6 thumb keys and does not require a swap key.
 
-![Paired One-Handed Symmetric Keyboards with Hexagonal Keys](/vaskoiii/symmetric-keyboard/vhex/export/hexboard.png)
+![Paired One-Handed Symmetric Keyboards with Hexagonal Keys](/vhex/export/hexboard.png)
 
 Custom Keymaps
 --------------
