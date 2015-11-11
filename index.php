@@ -229,9 +229,9 @@ function ptswap($id) { ?>
 	div {
 		border-radius: 25%;
 		border: 1px solid #000;
-		width: 64px;
-		height: 64px;
-		line-height: 32px;
+		width: 58px;
+		height: 58px;
+		line-height: 28px;
 		}
 	img {
 		margin-top: 16px;
@@ -252,7 +252,7 @@ function ptswap($id) { ?>
 		width: 100%;
 		max-width: 800px;
 		margin: 20px auto;
-		min-height: 34px;
+		min-height: 30px;
 		height: auto;
 		}
 		#output img {
