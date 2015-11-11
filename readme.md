@@ -22,8 +22,8 @@ Finger Placement
 * pinky = .
 * ring = ..
 * middle = ...
-* pointer = ___
-* thumb = O..
+* pointer = __
+* thumb = ..O
 
 Design
 ------
