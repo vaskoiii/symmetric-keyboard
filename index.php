@@ -227,6 +227,7 @@ function ptswap($id) { ?>
 		text-align: center;
 		}
 	div {
+		border-radius: 25%;
 		border: 1px solid #000;
 		width: 64px;
 		height: 64px;
@@ -246,6 +247,7 @@ function ptswap($id) { ?>
 		width: 800px;
 		}
 	#output {
+		border-radius: 0px;	
 		text-align: center;
 		width: 100%;
 		max-width: 800px;
@@ -492,7 +494,7 @@ function ptswap($id) { ?>
 	</p>
 	<p id="choose_mode">
 		change mode:
-		<a href="javascript: alert('currently the only available mode');">insert</a>
+		<a href="javascript: alert('insert mode is currently the only available mode');">insert</a>
 		<a href="javascript: alert('command mode not yet implemented')">command</a>
 	</p>
 	<p><small>Supported Browsers are in Green at: <nobr><a href="http://caniuse.com/touch">http://caniuse.com/touch</a></nobr></small></p>
