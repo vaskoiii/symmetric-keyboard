@@ -23,7 +23,7 @@ Finger Placement
 * ring = ..
 * middle = ...
 * pointer = __
-* thumb = ..O
+* thumb = O..
 
 Design
 ------
