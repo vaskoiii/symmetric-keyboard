@@ -1,6 +1,6 @@
 About
 -----
-Intended to be a universal keyboard (across all languages) by modeling the symmetry of the human hands.
+Universal keyboard (across all languages) by modeling the symmetry of the human hands.
 
 A 20 key one-handed keyboard (16 finger keys 3 thumb keys and 1 swap key).
 
@@ -12,7 +12,7 @@ Pairing 2 "1 Handed" keyboards facilitates 2 handed typing for faster operation.
 
 Custom Keymaps
 --------------
-Create your own design from:
+Create your own keymap design from:
 * keymap/template.php
 
 Any html can be used for the individual keys including 24px by 24px images.
