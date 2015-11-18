@@ -1,13 +1,23 @@
 <?
 # author: vaskoiii
 # description: software implementation of symmetric keyboard
-
 include('config.php');
+$keymap = array();
+$keymap_text = array();
 if (empty($_GET['keymap']))
 	$_GET['keymap'] = $config['keymap'][0];
 if (in_array($_GET['keymap'], $config['keymap']))
 	include('keymap/' . $_GET['keymap'] . '.php');
-
+foreach ($keymap as $k1 => $v1) {
+foreach ($v1 as $k2 => $v2) {
+foreach ($v2 as $k3 => $v3) {
+	$s1 = strip_tags($v3);
+	$s1 = html_entity_decode($s1);
+	$keymap_text[$k1][$k2][$k3] = strip_tags($s1);
+} } } 
+# end of php keymap handling
+$keymap_json = json_encode($keymap);
+$keymap_text_json = json_encode($keymap_text);
 # function
 function print_key($side, $key) {
 	$s1 = 'l';
@@ -41,7 +51,7 @@ function ptkey($side, $key) {
 		if (did('<?= $s1; ?>i<?= $s2; ?>').innerHTML == '<small>bs</small>')
 			delete_output();
 		else
-			pout(current, '<?= $side; ?>', '<?= $key; ?>', keymap, mirror);
+			pout(current, '<?= $side; ?>', '<?= $key; ?>', keymap, keymap_text, mirror);
 		e.preventDefault()
 	}, false)
 	did('<?= $s1; ?>i<?= $s2; ?>').addEventListener('touchend', function(e){
@@ -101,10 +111,9 @@ function ptswap($id) { ?>
 		display: inline-block;
 		position: relative;
 		border: none;
-		width: 66px;
+		width: 64px;
 		height: 448px;
 		text-align: center;
-		/* border: 1px solid orange; */
 		}
 		#clear ,
 		#option ,
@@ -113,20 +122,20 @@ function ptswap($id) { ?>
 			color: #777;
 			background: #ccc;
 			position: absolute;
-			margin: 0 auto;
+			left: 50%;
+			margin-left: -32px;
 			}
 		#clear {
-			top: 0px;
+			top: 64px;
 			}
 		#cswap {
-			top: 256px;
+			top: 192px;
 			border: 1px solid;
 			}
 		#option {
-			top: 480px;
+			top: 320px;
 			margin-bottom: 20px;
 			}
-		
 </style>
 <script>
 	function delete_output() {
@@ -136,7 +145,8 @@ function ptswap($id) { ?>
 	}
 	// global scope for keymap
 	<? # cant encode because already should be html ?>
-	var keymap = <?= ($keymap); ?>;
+	var keymap = <?= ($keymap_json); ?>;
+	var keymap_text = <?= ($keymap_text_json); ?>;
 	var mirror = 2;
 	var current = '00';
 	function did(s1) {
@@ -148,7 +158,7 @@ function ptswap($id) { ?>
 		o1.src = 'vhex/export/' + s1 + '.png';
 		o2.appendChild(o1);
 	}
-	function pout(meta, side, key, keymap, invert) {
+	function pout(meta, side, key, keymap, keymap_text, invert) {
 		var o1 = document.createElement('span');
 		var o2 = document.getElementById('output');
 		if (invert == 1)
@@ -162,6 +172,11 @@ function ptswap($id) { ?>
 		}
 		o1.innerHTML = keymap[meta][side][key];
 		o2.appendChild(o1);
+		if (1) { 
+			// enable ouptut cutting on opera
+			var o3 = document.createTextNode(keymap_text[meta][side][key]);
+			did('output_text').appendChild(o3);
+		}
 	}
 	function pad(num, size) {
 		var s1 = num + '';
@@ -395,7 +410,14 @@ function ptswap($id) { ?>
 			}
 </style>
 </head>
-<body>
+<body><?
+if ($debug != 1)
+	$s1 = ' position: absolute; margin-top: -999px;';
+else
+	$s1 = ''; ?> 
+<span style="display: block;<?= $s1; ?>">
+	<textarea id="output_text"></textarea>
+</span>
 <div id="output"></div>
 <div id="both">
 	<div id="left"><?
@@ -421,7 +443,7 @@ function ptswap($id) { ?>
 		<div id="ml18"><img src="vhex/export/00.png" /><img src="vhex/export/03.png" /></div>
 	</div>
 	<div id="extra">
-		<div id="clear">Clear</div>
+		<div id="clear">Cut</div>
 		<div id="cswap">Swap</div>
 		<div id="option">Option</div>
 	</div>
@@ -456,7 +478,7 @@ function ptswap($id) { ?>
 	}
 </script>
 
-<span id="option_block" style="display: block; margin-top: 110px;">
+<span id="option_block" style="display: block;">
 	<script>
 		function choose_keyboard($mode) {
 			switch ($mode) {
@@ -549,6 +571,12 @@ function ptswap($id) { ?>
 		ptswap('cswap');
 		?> 
 		did('clear').addEventListener('touchend', function(e){
+			// opera requires textarea for copy operations?
+			if (did('output_text').innerHTML) {
+				did('output_text').select();
+				document.execCommand('cut');
+				did('output_text').innerHTML = '';
+			}
 			did('output').innerHTML = '';
 			e.preventDefault()
 		}, false)

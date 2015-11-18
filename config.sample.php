@@ -1,6 +1,8 @@
 <?
 # author: vaskoiii
-# description: choose from available keymaps to select at the top of the page
+# description: available keymaps
+
+$debug = 2; # 1=true or 2=false
 
 $config['keymap'] = array(
 	# first keymap listed is the default

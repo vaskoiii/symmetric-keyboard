@@ -168,5 +168,3 @@ $keymap = array(
 		),
 	),
 );
-
-$keymap = json_encode($keymap);
