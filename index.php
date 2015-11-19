@@ -140,8 +140,9 @@ function ptswap($id) { ?>
 <script>
 	function delete_output() {
 		var elem = document.getElementById('output').lastChild;
-		// console.log(elem);
 		elem.parentNode.removeChild(elem);
+		var elem_text = document.getElementById('output_text').lastChild;
+		elem_text.parentNode.removeChild(elem_text);
 	}
 	// global scope for keymap
 	<? # cant encode because already should be html ?>
