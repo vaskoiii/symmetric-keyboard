@@ -85,7 +85,7 @@ function ptswap($id) { ?>
 	}, false) <?
 }
 ?><!doctype html>
-<html>
+<html id="html">
 <head> 
 	<meta charset="utf-8"><?
 	# 480px is the smallest screen that can fit the 64px by 64px keys but want to accomodate 320px
@@ -95,6 +95,7 @@ function ptswap($id) { ?>
 	<meta name="viewport" content="width=device-width, initial-scale=.7">
 	<title>Symmetric Keyboard</title>
 <style>
+	#choose_theme,
 	#choose_mode,
 	#choose_keyboard,
 	#choose_keymap {
@@ -102,6 +103,7 @@ function ptswap($id) { ?>
 		text-align: center;
 		width: 100%;
 		}
+		#choose_theme a,
 		#choose_mode a,
 		#choose_keyboard a,
 		#choose_keymap a {
@@ -502,12 +504,32 @@ else
 				break;
 			}
 		}
+		function choose_theme(s1) {
+			o1 = did('html');
+			switch (s1) {
+				case 'dark':
+					o1.style.background = 'black';
+					o1.style.filter = 'invert(100%)';
+					o1.style.webkitFilter = 'invert(100%)';
+				break;
+				case 'light':
+					o1.style.background = 'white';
+					o1.style.filter = 'invert(0%)';
+					o1.style.webkitFilter = 'invert(0%)';
+				break;	
+			}
+		}
 	</script>
 	<p id="choose_keyboard">
 		change keyboard:
 		<a href="javascript: choose_keyboard('left')">left_only</a>
 		<a href="javascript: choose_keyboard('right')">right_only</a>
 		<a href="javascript: choose_keyboard('both')">both</a>
+	</p>
+	<p id="choose_theme">
+		change theme:
+		<a href="javascript: choose_theme('dark')">dark</a>
+		<a href="javascript: choose_theme('light')">light</a>
 	</p>
 	<p id="choose_keymap">
 		change keymap: <?
@@ -520,7 +542,7 @@ else
 		<a href="javascript: alert('insert mode is currently the only available mode');">insert</a>
 		<a href="javascript: alert('command mode not yet implemented')">command</a>
 	</p>
-	<p><small>Supported Browsers are in Green at: <nobr><a href="http://caniuse.com/touch">http://caniuse.com/touch</a></nobr></small></p>
+	<p><small>supported browsers are in green at: <nobr><a href="http://caniuse.com/touch">http://caniuse.com/touch</a></nobr></small></p>
 </span>
 <script>
 	// dont get keymap asynchronously (with ajax)
