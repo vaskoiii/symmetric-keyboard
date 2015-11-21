@@ -441,9 +441,9 @@ else
 		print_key('0', '1110');
 		print_key('0', '1111'); ?> 
 		<!-- meta -->
-		<div id="ml16"><img src="vhex/export/00.png" /><img src="vhex/export/01.png" /></div>
-		<div id="ml17"><img src="vhex/export/00.png" /><img src="vhex/export/02.png" /></div>
-		<div id="ml18"><img src="vhex/export/00.png" /><img src="vhex/export/03.png" /></div>
+		<div id="ml16"><img src="vhex/export/01.png" /></div>
+		<div id="ml17"><img src="vhex/export/02.png" /></div>
+		<div id="ml18"><img src="vhex/export/03.png" /></div>
 	</div>
 	<div id="extra">
 		<div id="clear">Cut</div>
@@ -468,9 +468,9 @@ else
 		print_key('1', '1110');
 		print_key('1', '1111'); ?> 
 		<!-- meta -->
-		<div id="mr16"><img src="vhex/export/00.png" /><img src="vhex/export/01.png" /></div>
-		<div id="mr17"><img src="vhex/export/00.png" /><img src="vhex/export/02.png" /></div>
-		<div id="mr18"><img src="vhex/export/00.png" /><img src="vhex/export/03.png" /></div>
+		<div id="mr16"><img src="vhex/export/01.png" /></div>
+		<div id="mr17"><img src="vhex/export/02.png" /></div>
+		<div id="mr18"><img src="vhex/export/03.png" /></div>
 	</div>
 </div>
 <br clear="all" />
