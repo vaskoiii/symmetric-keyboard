@@ -13,7 +13,7 @@ foreach ($v1 as $k2 => $v2) {
 foreach ($v2 as $k3 => $v3) {
 	$s1 = strip_tags($v3);
 	$s1 = html_entity_decode($s1);
-	$keymap_text[$k1][$k2][$k3] = strip_tags($s1);
+	$keymap_text[$k1][$k2][$k3] = $s1;
 } } } 
 # end of php keymap handling
 $keymap_json = json_encode($keymap);
@@ -134,7 +134,13 @@ function ptswap($id) { ?>
 		o2.appendChild(o1);
 		if (1) { 
 			// enable ouptut cutting on opera
-			var o3 = document.createTextNode(keymap_text[meta][side][key]);
+			var s1 = keymap_text[meta][side][key];
+			switch (s1) {
+				case '\u00a0':
+					s1 = ' '; // breakable spaces for cutting
+				break;
+			}
+			var o3 = document.createTextNode(s1);
 			did('output_text').appendChild(o3);
 		}
 	}
