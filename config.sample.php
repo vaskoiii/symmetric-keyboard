@@ -4,6 +4,8 @@
 
 $debug = 2; # 1=true or 2=false
 
+$vibrate = 50; # vibrate time in ms
+
 $config['keymap'] = array(
 	# first keymap listed is the default
 	'qwerty',

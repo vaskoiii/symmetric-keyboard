@@ -16,6 +16,7 @@ img {
 	margin-top: 16px;
 	width: 24px;
 	height: 24px; }
+#choose_vibrate,
 #choose_theme,
 #choose_mode,
 #choose_keyboard,
@@ -23,6 +24,7 @@ img {
 	border: none;
 	text-align: center;
 	width: 100%; }
+	#choose_vibrate a,
 	#choose_theme a,
 	#choose_mode a,
 	#choose_keyboard a,

@@ -43,11 +43,14 @@ function print_akey($left, $top, $side, $key) {
 		}<?
 }
 function ptkey($side, $key) {
+	global $vibrate;
 	$s1 = 'l';
 	if ($side == '1')
 		$s1 = 'r';
 	$s2 = str_pad(bindec($key), 2, '0', STR_PAD_LEFT); ?> 
 	did('<?= $s1; ?>i<?= $s2; ?>').addEventListener('touchstart', function(e){
+		if (vibrate == 1)
+			navigator.vibrate(<?= $vibrate; ?>);
 		if (did('<?= $s1; ?>i<?= $s2; ?>').innerHTML == '<small>bs</small>')
 			delete_output();
 		else
@@ -58,8 +61,11 @@ function ptkey($side, $key) {
 		e.preventDefault()
 	}, false)<?
 }
-function ptmeta($button, $meta) { ?> 
+function ptmeta($button, $meta) {
+	global $vibrate; ?> 
 	did('<?= $button; ?>').addEventListener('touchstart', function(e){
+		if (vibrate == 1)
+			navigator.vibrate(<?= $vibrate; ?>);
 		current = '<?= $meta; ?>';
 		meta_mod(current, keymap, mirror);
 		e.preventDefault()
@@ -70,8 +76,11 @@ function ptmeta($button, $meta) { ?>
 		e.preventDefault()
 	}, false)<?
 }
-function ptswap($id) { ?> 
+function ptswap($id) {
+	global $vibrate; ?> 
 	did('<?= $id; ?>').addEventListener('touchstart', function(e){
+		if (vibrate == 1)
+			navigator.vibrate(<?= $vibrate; ?>);
 		mirror = 1;
 		// current = '00';
 		meta_mod(current, keymap, mirror);
@@ -107,6 +116,7 @@ function ptswap($id) { ?>
 	<? # cant encode because already should be html ?>
 	var keymap = <?= ($keymap_json); ?>;
 	var keymap_text = <?= ($keymap_text_json); ?>;
+	var vibrate = 1;
 	var mirror = 2;
 	var current = '00';
 	function did(s1) {
@@ -322,6 +332,11 @@ else
 			<a href="<?= htmlentities($_SERVER['PHP_SELF']); ?>?keymap=<?= htmlentities($v1); ?>"><?= htmlentities($v1); ?></a><?
 		} ?> 
 	</p>
+	<p id="choose_vibrate">
+		change vibrate:
+		<a href="javascript: vibrate = 1;">on</a>
+		<a href="javascript: vibrate = 2;">off</a>
+	</p>
 	<p id="choose_mode">
 		change mode:
 		<a href="javascript: alert('insert mode is currently the only available mode');">insert</a>
@@ -378,6 +393,10 @@ else
 		# swap
 		ptswap('cswap');
 		?> 
+		did('clear').addEventListener('touchstart', function(e){
+			if (vibrate == 1)
+				navigator.vibrate(<?= $vibrate; ?>);
+		}, false)
 		did('clear').addEventListener('touchend', function(e){
 			// opera requires textarea for copy operations?
 			if (did('output_text').innerHTML) {
@@ -387,6 +406,10 @@ else
 			}
 			did('output').innerHTML = '';
 			e.preventDefault()
+		}, false)
+		did('option').addEventListener('touchstart', function(e){
+			if (vibrate == 1)
+				navigator.vibrate(<?= $vibrate; ?>);
 		}, false)
 		did('option').addEventListener('touchend', function(e){
 			o1 = did('option_block');
