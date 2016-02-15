@@ -19,6 +19,9 @@ foreach ($v2 as $k3 => $v3) {
 $keymap_json = json_encode($keymap);
 $keymap_text_json = json_encode($keymap_text);
 # function
+function to_html($s1) {
+	return htmlentities($s1);
+}
 function print_key($side, $key) {
 	$s1 = 'l';
 	if ($side == '1')
@@ -93,6 +96,40 @@ function ptswap($id) {
 		e.preventDefault()
 	}, false) <?
 }
+function ptclear($s1) { ?> 
+	did('<?= to_html($s1); ?>').addEventListener('touchstart', function(e){
+		if (vibrate == 1)
+			navigator.vibrate(<?= $vibrate; ?>);
+	}, false)
+	did('<?= to_html($s1); ?>').addEventListener('touchend', function(e){
+		// opera requires textarea for copy operations?
+		if (did('output_text').innerHTML) {
+			did('output_text').select();
+			document.execCommand('cut');
+			did('output_text').innerHTML = '';
+		}
+		did('output').innerHTML = '';
+		e.preventDefault()
+	}, false) <?
+}
+function ptoption($s1) { ?> 
+	did('<?= to_html($s1); ?>').addEventListener('touchstart', function(e){
+		if (vibrate == 1)
+			navigator.vibrate(<?= $vibrate; ?>);
+	}, false)
+	did('<?= to_html($s1); ?>').addEventListener('touchend', function(e){
+		o1 = did('option_block');
+		switch (o1.style.display) {
+			case 'block':
+				o1.style.display = 'none';
+			break;
+			default:
+				o1.style.display = 'block';
+			break;
+		}
+		e.preventDefault()
+	}, false) <?
+}
 ?><!doctype html>
 <html id="html">
 <head> 
@@ -115,8 +152,16 @@ function ptswap($id) {
 	// global scope for keymap
 	<? # cant encode because already should be html ?>
 	var keymap = <?= ($keymap_json); ?>;
-	var keymap_text = <?= ($keymap_text_json); ?>;
-	var vibrate = 1;
+	var keymap_text = <?= ($keymap_text_json); ?>;<?
+	if (!empty($default['vibrate'])) {
+	switch ($default['vibrate']) {
+		case 'on': ?> 
+			var vibrate = 1; <?
+		break;
+		default: ?> 
+			var vibrate = 2; <?
+		break;
+	} } ?> 
 	var mirror = 2;
 	var current = '00';
 	function did(s1) {
@@ -218,6 +263,7 @@ else
 </span>
 <div id="output"></div>
 <div id="both">
+	<div id="left_base">
 	<div id="left"><?
 		print_key('0', '0000');
 		print_key('0', '0001');
@@ -239,12 +285,17 @@ else
 		<div id="ml16"><img src="vhex/export/01.png" /></div>
 		<div id="ml17"><img src="vhex/export/02.png" /></div>
 		<div id="ml18"><img src="vhex/export/03.png" /></div>
+		<div id="lswap">swap</div>
+		<div id="lclear">cut</div>
+		<div id="loption">option</div>
 	</div>
+	</div><?/*
 	<div id="extra">
 		<div id="clear">Cut</div>
-		<div id="cswap">Swap</div>
+		<!-- <div id="cswap">Swap</div> -->
 		<div id="option">Option</div>
 	</div>
+	*/?><div id="right_base">
 	<div id="right"><?
 		print_key('1', '0000');
 		print_key('1', '0001');
@@ -266,9 +317,13 @@ else
 		<div id="mr16"><img src="vhex/export/01.png" /></div>
 		<div id="mr17"><img src="vhex/export/02.png" /></div>
 		<div id="mr18"><img src="vhex/export/03.png" /></div>
+		<div id="rswap">swap</div>
+		<div id="rclear">cut</div>
+		<div id="roption">option</div>
+	</div>
 	</div>
 </div>
-<br clear="all" />
+<!-- <br clear="all" /> -->
 <script>
 	var i1 = (window.innerWidth - 800)/2;
 	if (i1 > 0) {
@@ -276,26 +331,26 @@ else
 	}
 </script>
 
-<span id="option_block" style="display: block;">
+<span id="option_block" style="margin-top: 30px; margin-bottom: 30px; display: block;">
 	<script>
 		function choose_keyboard($mode) {
 			switch ($mode) {
 				case 'left':
-					did('left').style.display = 'inline-block';
-					did('right').style.display = 'none';
+					did('left_base').style.display = 'inline-block';
+					did('right_base').style.display = 'none';
 					// did('both').style.width = '352px'
-					did('both').style.width = '440px'
+					did('both').style.width = '465px'
 				break;
 				case 'right':
-					did('left').style.display = 'none';
-					did('right').style.display = 'inline-block';
+					did('left_base').style.display = 'none';
+					did('right_base').style.display = 'inline-block';
 					// did('both').style.width = '352px'
-					did('both').style.width = '440px'
+					did('both').style.width = '465px'
 				break;
 				case 'both':
-					did('left').style.display = 'inline-block';
-					did('right').style.display = 'inline-block';
-					did('both').style.width = '800px'
+					did('left_base').style.display = 'inline-block';
+					did('right_base').style.display = 'inline-block';
+					did('both').style.width = '1000px'
 				break;
 			}
 		}
@@ -342,6 +397,7 @@ else
 		<a href="javascript: alert('insert mode is currently the only available mode');">insert</a>
 		<a href="javascript: alert('command mode not yet implemented')">command</a>
 	</p>
+	<p><small>not intended for hardware design: "cut" and "option"</small></p>
 	<p><small>supported browsers are in green at: <nobr><a href="http://caniuse.com/touch">http://caniuse.com/touch</a></nobr></small></p>
 </span>
 <script>
@@ -391,42 +447,18 @@ else
 		ptmeta('mr17', '10');
 		ptmeta('mr18', '11');
 		# swap
-		ptswap('cswap');
-		?> 
-		did('clear').addEventListener('touchstart', function(e){
-			if (vibrate == 1)
-				navigator.vibrate(<?= $vibrate; ?>);
-		}, false)
-		did('clear').addEventListener('touchend', function(e){
-			// opera requires textarea for copy operations?
-			if (did('output_text').innerHTML) {
-				did('output_text').select();
-				document.execCommand('cut');
-				did('output_text').innerHTML = '';
-			}
-			did('output').innerHTML = '';
-			e.preventDefault()
-		}, false)
-		did('option').addEventListener('touchstart', function(e){
-			if (vibrate == 1)
-				navigator.vibrate(<?= $vibrate; ?>);
-		}, false)
-		did('option').addEventListener('touchend', function(e){
-			o1 = did('option_block');
-			switch (o1.style.display) {
-				case 'block':
-					o1.style.display = 'none';
-				break;
-				default:
-					o1.style.display = 'block';
-				break;
-			}
-			e.preventDefault()
-		}, false)
+		ptswap('lswap');
+		ptswap('rswap');
+		ptclear('lclear');
+		ptclear('rclear');
+		ptoption('loption');
+		ptoption('roption'); ?> 
+		// dont hide typing output
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
 	}, false)
 </script>
 <script>
-	if (screen.width <= 840) {
+	if (screen.width <= 940) {
 		choose_keyboard('left');
 	}
 </script>

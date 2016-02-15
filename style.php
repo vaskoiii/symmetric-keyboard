@@ -3,7 +3,7 @@ html {
 	margin: 0px;
 	padding: 0px; }
 body {
-	margin: 0px 10px;
+	margin: 0px;
 	padding: 0px;
 	text-align: center; }
 div {
@@ -32,7 +32,10 @@ img {
 		margin: 0px 5px; }
 #extra {
 	display: inline-block;
+	display: none;
 	position: relative;
+	margin-left: -32px;
+	margin-right: -32px;
 	border: none;
 	width: 64px;
 	height: 448px;
@@ -48,25 +51,62 @@ img {
 		margin-left: -32px; }
 	#clear {
 		top: 64px; }
+	#lclear,
+	#rclear,
+	#loption,
+	#roption {
+		border: 1px dotted;
+		color: #777;
+		background: #ccc; }
 	#cswap {
 		top: 192px;
 		border: 1px solid; }
+	#loption {
+		position: absolute;
+		top: 320px;
+		left: 320px;
+		}
+	#lclear {
+		position: absolute;
+		top: 64px;
+		left: 320px;
+		}
+	#lswap {
+		position: absolute;
+		top: 192px;
+		left: 320px;	
+		}
+	#roption {
+		position: absolute;
+		top: 320px;
+		left: 0px;
+		}
+	#rclear {
+		position: absolute;
+		top: 64px;
+		left: 0px;
+		}
+	#rswap {
+		position: absolute;
+		top: 192px;
+		left: 0px;
+		}
 	#option {
 		top: 320px;
 		margin-bottom: 20px; }
 #both {
 	border: 1px;
 	margin: 0px auto;
-	width: 352px; /* width of 5.5 squares */
-	height: 448px; /* height  of 7 squares */
+	height: 498px;
 	/* controls the separation in between left and right keypad */
-	width: 800px; }
+	width: 1000px; }
 #output {
 	border-radius: 0px;	
+	border-right: 0px;
+	border-left: 0px;
 	text-align: center;
 	width: 100%;
-	max-width: 800px;
-	margin: 20px auto;
+	margin: 0px auto;
 	min-height: 30px;
 	height: auto; }
 	#output img {
@@ -96,36 +136,42 @@ img {
 	#mr18, #mri18, #ml18, #mli18,
 	#rlmxx {
 		position: absolute; }
+#right_base {
+	display: inline-block;
+	border: 1px solid #777;
+	width: 396px;
+	height: 448px;
+	padding: 25px; }
 #right {
 	border: none;
 	position: relative;
-	width: 352px;
+	width: 384px;
 	height: 448px;
 	display: inline-block; } <?
-	print_akey(224, 64, '1', '0001');
-	print_akey(160, 64, '1', '0010');
-	print_akey(96, 64, '1', '0011');
-	print_akey(64, 128, '1', '0100');
-	print_akey(96, 192, '1', '0101');
-	print_akey(128, 128, '1', '0110');
-	print_akey(192, 128, '1', '0111');
-	print_akey(256, 128, '1', '1000');
-	print_akey(288, 64, '1', '1001');
-	print_akey(256, 0, '1', '1010');
-	print_akey(192, 0, '1', '1011');
-	print_akey(128, 0, '1', '1100');
-	print_akey(64, 0, '1', '1101');
-	print_akey(32, 64, '1', '1110');
-	print_akey(0, 128, '1', '1111');
-	print_akey(32, 192, '1', '0000'); ?> 
+	print_akey(256, 64, '1', '0001');
+	print_akey(192, 64, '1', '0010');
+	print_akey(128, 64, '1', '0011');
+	print_akey(96, 128, '1', '0100');
+	print_akey(128, 192, '1', '0101');
+	print_akey(160, 128, '1', '0110');
+	print_akey(224, 128, '1', '0111');
+	print_akey(288, 128, '1', '1000');
+	print_akey(320, 64, '1', '1001');
+	print_akey(288, 0, '1', '1010');
+	print_akey(224, 0, '1', '1011');
+	print_akey(160, 0, '1', '1100');
+	print_akey(96, 0, '1', '1101');
+	print_akey(64, 64, '1', '1110');
+	print_akey(32, 128, '1', '1111');
+	print_akey(64, 192, '1', '0000'); ?> 
 	#mr16 {
-		left: 64px;
+		left: 96px;
 		top: 256px; }
 	#mr17 {
-		left: 32px;
+		left: 64px;
 		top: 320px; }
 	#mr18 {
-		left: 0px;
+		left: 32px;
 		top: 384px; }
 	#r01, #r02, #r03, #r04,
 	#r05, #r06, #r07, #r08,
@@ -134,10 +180,16 @@ img {
 	#mr16, #mr17, #mr18, #rlmxx {
 		transform: scaleX(-1);
 	} 
+#left_base {
+	display: inline-block;
+	border: 1px solid #777;
+	width: 396px;
+	height: 448px;
+	padding: 25px; }
 #left {
 	border: none;
 	position: relative;
-	width: 352px; /* width of 5.5 squares */
+	width: 384px; /* width of 6 squares */
 	height: 448px; /* height  of 7 squares */
 	display: inline-block; } <?
 	print_akey(64, 64, '0', '0001');

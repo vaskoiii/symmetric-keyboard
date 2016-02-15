@@ -4,6 +4,10 @@
 
 $debug = 2; # 1=true or 2=false
 
+$default = array(
+	'vibrate' => 'off',
+);
+
 $vibrate = 50; # vibrate time in ms
 
 $config['keymap'] = array(
