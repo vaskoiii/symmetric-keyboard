@@ -7,7 +7,7 @@ body {
 	padding: 0px;
 	text-align: center; }
 div {
-	border-radius: 25%;
+	border-radius: 10%;
 	border: 1px solid #000;
 	width: 58px;
 	height: 58px;
@@ -228,6 +228,10 @@ img {
 		background-position:  50% 75%;<?
 		if (in_array($_GET['keymap'], $config['nobraille']))
 			echo "\n" . 'display: none;'; ?> }
+	#mr16, #mri16, #ml16, #mli16,
+	#mr17, #mri17, #ml17, #mli17,
+	#mr18, #mri18, #ml18, #mli18 {
+		opacity: 1; } 
 	#mr16, #ml16,
 	#mr17, #ml17,
 	#mr18, #ml18,
