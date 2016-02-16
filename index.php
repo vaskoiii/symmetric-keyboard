@@ -386,17 +386,21 @@ else
 		foreach ($config['keymap'] as $k1 => $v1) { ?> 
 			<a href="<?= htmlentities($_SERVER['PHP_SELF']); ?>?keymap=<?= htmlentities($v1); ?>"><?= htmlentities($v1); ?></a><?
 		} ?> 
-	</p>
+	</p><?
+	# vibration is lagged ?> 	
+	<!--
 	<p id="choose_vibrate">
 		change vibrate:
 		<a href="javascript: vibrate = 1;">on</a>
 		<a href="javascript: vibrate = 2;">off</a>
-	</p>
+	</p><?
+	# todo not implemented ?> 
 	<p id="choose_mode">
 		change mode:
 		<a href="javascript: alert('insert mode is currently the only available mode');">insert</a>
 		<a href="javascript: alert('command mode not yet implemented')">command</a>
 	</p>
+	-->
 	<p><small>not intended for hardware design: "cut" and "option"</small></p>
 	<p><small>supported browsers are in green at: <nobr><a href="http://caniuse.com/touch">http://caniuse.com/touch</a></nobr></small></p>
 </span>
