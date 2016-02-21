@@ -55,12 +55,15 @@ img {
 	#rclear,
 	#loption,
 	#roption {
-		border: 1px dotted;
-		color: #777;
-		background: #ccc; }
+		line-height: 56px;
+		border: none;
+		text-decoration: overline;
+		color: #777; }
+		background: none; }
 	#cswap {
 		top: 192px;
-		border: 1px solid; }
+		background: #ccc;
+		border: 1px dotted; }
 	#loption {
 		position: absolute;
 		top: 320px;
@@ -72,7 +75,9 @@ img {
 		left: 320px;
 		}
 	#lswap {
+		border: 1px dotted;
 		position: absolute;
+		background: #ccc;
 		top: 192px;
 		left: 320px;	
 		}
@@ -87,7 +92,9 @@ img {
 		left: 0px;
 		}
 	#rswap {
+		border: 1px dotted;
 		position: absolute;
+		background: #ccc;
 		top: 192px;
 		left: 0px;
 		}

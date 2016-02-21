@@ -285,9 +285,13 @@ else
 		<div id="ml16"><img src="vhex/export/01.png" /></div>
 		<div id="ml17"><img src="vhex/export/02.png" /></div>
 		<div id="ml18"><img src="vhex/export/03.png" /></div>
-		<div id="lswap">swap</div>
+		<div id="lswap">
+			&rarr;
+			<br />
+			&larr;
+		</div>
 		<div id="lclear">cut</div>
-		<div id="loption">option</div>
+		<div id="loption">opt</div>
 	</div>
 	</div><?/*
 	<div id="extra">
@@ -317,9 +321,13 @@ else
 		<div id="mr16"><img src="vhex/export/01.png" /></div>
 		<div id="mr17"><img src="vhex/export/02.png" /></div>
 		<div id="mr18"><img src="vhex/export/03.png" /></div>
-		<div id="rswap">swap</div>
+		<div id="rswap">
+			&larr;
+			<br />
+			&rarr;
+		</div>
 		<div id="rclear">cut</div>
-		<div id="roption">option</div>
+		<div id="roption">opt</div>
 	</div>
 	</div>
 </div>
@@ -401,7 +409,14 @@ else
 		<a href="javascript: alert('command mode not yet implemented')">command</a>
 	</p>
 	-->
-	<p><small>not intended for hardware design: "cut" and "option"</small></p>
+	<p>
+		<small>
+			not intended for hardware design:
+			<span style="text-decoration: overline;">cut</span>
+			and
+			<span style="text-decoration: overline;">opt</span>
+		</small>
+	</p>
 	<p><small>supported browsers are in green at: <nobr><a href="http://caniuse.com/touch">http://caniuse.com/touch</a></nobr></small></p>
 </span>
 <script>
