@@ -108,6 +108,8 @@ img {
 	/* controls the separation in between left and right keypad */
 	width: 1000px; }
 #output {
+	overflow: hidden;
+	direction: rtl;
 	border-radius: 0px;	
 	border-right: 0px;
 	border-left: 0px;
