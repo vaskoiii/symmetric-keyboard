@@ -107,15 +107,22 @@ img {
 	height: 498px;
 	/* controls the separation in between left and right keypad */
 	width: 1000px; }
-#output {
-	overflow: hidden;
-	direction: rtl;
+#output_anchor {
+	width: 100%;
+	height: auto;
+	white-space: nowrap;
 	border-radius: 0px;	
 	border-right: 0px;
 	border-left: 0px;
-	text-align: center;
-	width: 100%;
-	margin: 0px auto;
+	overflow: hidden; }
+#output {
+	float: right;
+	border: 0px;
+	border-radius: 0px;	
+	/* needed for #output_anchor hack */
+	width: auto;
+	padding-right: 50%;
+	text-align: right;
 	min-height: 30px;
 	height: auto; }
 	#output img {

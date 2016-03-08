@@ -261,7 +261,9 @@ else
 <span style="display: block;<?= $s1; ?>">
 	<textarea id="output_text"></textarea>
 </span>
-<div id="output"></div>
+<div id="output_anchor">
+	<div id="output"></div>
+</div>
 <div id="both">
 	<div id="left_base">
 	<div id="left"><?
