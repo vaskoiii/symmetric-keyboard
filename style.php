@@ -128,6 +128,8 @@ img {
 	#output img {
 		width: 24px;
 		height: 24px;
+		margin-left: 4px;
+		margin-right: 4px;
 		margin-top: 0px;
 		margin-bottom: -8px; }
 
