@@ -16,6 +16,7 @@ img {
 	margin-top: 16px;
 	width: 24px;
 	height: 24px; }
+#choose_position,
 #choose_vibrate,
 #choose_theme,
 #choose_mode,
@@ -24,6 +25,7 @@ img {
 	border: none;
 	text-align: center;
 	width: 100%; }
+	#choose_position a,
 	#choose_vibrate a,
 	#choose_theme a,
 	#choose_mode a,
@@ -155,8 +157,9 @@ img {
 	#rlmxx {
 		position: absolute; }
 #right_base {
+	margin-top: 32px;
+	border: none;
 	display: inline-block;
-	border: 1px solid #777;
 	width: 396px;
 	height: 448px;
 	padding: 25px; }
@@ -199,8 +202,9 @@ img {
 		transform: scaleX(-1);
 	} 
 #left_base {
+	margin-top: 32px;
+	border: none;
 	display: inline-block;
-	border: 1px solid #777;
 	width: 396px;
 	height: 448px;
 	padding: 25px; }

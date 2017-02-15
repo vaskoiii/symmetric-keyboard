@@ -341,7 +341,7 @@ else
 	}
 </script>
 
-<span id="option_block" style="margin-top: 30px; margin-bottom: 30px; display: block;">
+<span id="option_block" style="margin-top: 60px; margin-bottom: 30px; display: block;">
 	<script>
 		function choose_keyboard($mode) {
 			switch ($mode) {
@@ -364,6 +364,22 @@ else
 				break;
 			}
 		}
+		function choose_position(s1) {
+			switch (s1) {
+				case 'waist':
+					did('left_base').style.transform = 'rotate(0deg)';
+					did('right_base').style.transform = 'rotate(-0deg)';
+				break;
+				case 'belly':
+					did('left_base').style.transform = 'rotate(26.6deg)';
+					did('right_base').style.transform = 'rotate(-26.6deg)';
+				break;
+				case 'chest':
+					did('left_base').style.transform = 'rotate(45deg)';
+					did('right_base').style.transform = 'rotate(-45deg)';
+				break;
+			}
+		}
 		function choose_theme(s1) {
 			o1 = did('html');
 			switch (s1) {
@@ -381,18 +397,24 @@ else
 		}
 	</script>
 	<p id="choose_keyboard">
-		change keyboard:
+		keyboard:
 		<a href="javascript: choose_keyboard('left')">left_only</a>
 		<a href="javascript: choose_keyboard('right')">right_only</a>
 		<a href="javascript: choose_keyboard('both')">both</a>
 	</p>
+	<p id="choose_position">
+		position:
+		<a href="javascript: choose_position('waist')">waist</a>
+		<a href="javascript: choose_position('belly')">belly</a>
+		<a href="javascript: choose_position('chest')">chest</a>
+	</p>
 	<p id="choose_theme">
-		change theme:
+		theme:
 		<a href="javascript: choose_theme('dark')">dark</a>
 		<a href="javascript: choose_theme('light')">light</a>
 	</p>
 	<p id="choose_keymap">
-		change keymap: <?
+		keymap: <?
 		foreach ($config['keymap'] as $k1 => $v1) { ?> 
 			<a href="<?= htmlentities($_SERVER['PHP_SELF']); ?>?keymap=<?= htmlentities($v1); ?>"><?= htmlentities($v1); ?></a><?
 		} ?> 
