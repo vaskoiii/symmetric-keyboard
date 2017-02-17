@@ -396,17 +396,17 @@ else
 			}
 		}
 	</script>
-	<p id="choose_keyboard">
-		keyboard:
-		<a href="javascript: choose_keyboard('left')">left_only</a>
-		<a href="javascript: choose_keyboard('right')">right_only</a>
-		<a href="javascript: choose_keyboard('both')">both</a>
-	</p>
 	<p id="choose_position">
 		position:
 		<a href="javascript: choose_position('waist')">waist</a>
 		<a href="javascript: choose_position('belly')">belly</a>
 		<a href="javascript: choose_position('chest')">chest</a>
+	</p>
+	<p id="choose_keyboard">
+		keyboard:
+		<a href="javascript: choose_keyboard('left')">left_only</a>
+		<a href="javascript: choose_keyboard('right')">right_only</a>
+		<a href="javascript: choose_keyboard('both')">both</a>
 	</p>
 	<p id="choose_theme">
 		theme:

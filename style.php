@@ -157,6 +157,7 @@ img {
 	#rlmxx {
 		position: absolute; }
 #right_base {
+	margin: 8px;
 	margin-top: 32px;
 	border: none;
 	display: inline-block;
@@ -202,6 +203,7 @@ img {
 		transform: scaleX(-1);
 	} 
 #left_base {
+	margin: 8px;
 	margin-top: 32px;
 	border: none;
 	display: inline-block;
