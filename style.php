@@ -43,8 +43,7 @@ img {
 	height: 448px;
 	text-align: center; }
 	#clear ,
-	#option ,
-	#cswap {
+	#option {
 		border: 1px dotted;
 		color: #777;
 		background: #ccc;
@@ -61,11 +60,6 @@ img {
 		border: none;
 		text-decoration: overline;
 		color: #777; }
-		background: none; }
-	#cswap {
-		top: 192px;
-		background: #ccc;
-		border: 1px dotted; }
 	#loption {
 		position: absolute;
 		top: 320px;
@@ -76,13 +70,33 @@ img {
 		top: 64px;
 		left: 320px;
 		}
-	#lswap {
+	#ltm1, #ltm2, #ltm3, #ltm4, #lcm1, #lcm2, #lcm3, #lcm4 {
+		position: absolute;
+	}
+	#lkm4 {
 		border: 1px dotted;
 		position: absolute;
-		background: #ccc;
+		background: #ddd;
 		top: 192px;
 		left: 320px;	
 		}
+		#ltm4 { <?
+			if ($_GET['texture'] == 'vhex') { ?> 
+				background: #ccc;<?
+			}
+			else { ?> 
+				background: url('/vfence/export/m4.png');
+				background-size: 56px 56px;
+				background-position: 5% -5%;
+				opacity: .2; <?
+			} ?> 
+			position: absolute; }
+		#lcm4 {
+			margin-top: 12px;
+			/* make sure width and height are contained on the key */
+			height: auto;
+			border: none;
+			position: absolute; }
 	#roption {
 		position: absolute;
 		top: 320px;
@@ -93,13 +107,33 @@ img {
 		top: 64px;
 		left: 0px;
 		}
-	#rswap {
+	#rtm1, #rtm2, #rtm3, #rtm4, #rcm1, #rcm2, #rcm3, #rcm4 {
+		position: absolute;
+	}
+	#rkm4 {
 		border: 1px dotted;
 		position: absolute;
-		background: #ccc;
 		top: 192px;
 		left: 0px;
+		background: #ddd;
 		}
+		#rtm4 { <?
+			if ($_GET['texture'] == 'vhex') { ?> 
+				background: #ccc;<?
+			}
+			else { ?> 
+				background: url('/vfence/export/m4.png');
+				background-size: 56px 56px;
+				background-position: 5% -5%;
+				transform: scaleX(-1);
+				opacity: .2; <?
+			} ?> 
+			position: absolute; }
+		#rcm4 {
+			margin-top: 12px;
+			border: none;
+			height: auto;
+			position: absolute; }
 	#option {
 		top: 320px;
 		margin-bottom: 20px; }
@@ -151,9 +185,9 @@ img {
 	#ro14, #r14, #ri14, #l14, #li14, #lo14,
 	#ro15, #r15, #ri15, #l15, #li15, #lo15,
 	#ro00, #r00, #ri00, #l00, #li00, #lo00,
-	#mr16, #mri16, #ml16, #mli16,
-	#mr17, #mri17, #ml17, #mli17,
-	#mr18, #mri18, #ml18, #mli18,
+	#rkm1, #mri16, #lkm1, #mli16,
+	#rkm2, #mri17, #lkm2, #mli17,
+	#rkm3, #mri18, #lkm3, #mli18,
 	#rlmxx {
 		position: absolute; }
 #right_base {
@@ -186,22 +220,39 @@ img {
 	print_akey(64, 64, '1', '1110');
 	print_akey(32, 128, '1', '1111');
 	print_akey(64, 192, '1', '0000'); ?> 
-	#mr16 {
+	#rkm1 {
 		left: 96px;
 		top: 256px; }
-	#mr17 {
+	#rkm2 {
 		left: 64px;
 		top: 320px; }
-	#mr18 {
+	#rkm3 {
 		left: 32px;
 		top: 384px; }
 	#r01, #r02, #r03, #r04,
 	#r05, #r06, #r07, #r08,
 	#r09, #r10, #r11, #r12,
 	#r13, #r14, #r15, #r00,
-	#mr16, #mr17, #mr18, #rlmxx {
+	#rkm1, #rkm2, #rkm3, #rlmxx {
 		transform: scaleX(-1);
+		opacity: .2;
 	} 
+	<? # todo dry ?>
+	#rkm1 { <?
+		if ($_GET['texture'] != 'vhex') { ?> 
+			background: url('/vfence/export/m1.png');<?
+		} ?> 
+	}
+	#rkm2 { <?
+		if ($_GET['texture'] != 'vhex') { ?> 
+			background: url('/vfence/export/m2.png');<?
+		} ?> 
+	}
+	#rkm3 { <?
+		if ($_GET['texture'] != 'vhex') { ?> 
+			background: url('/vfence/export/m3.png');<?
+		} ?> 
+	}
 #left_base {
 	margin: 8px;
 	margin-top: 32px;
@@ -232,33 +283,58 @@ img {
 	print_akey(256, 64, '0', '1110');
 	print_akey(288, 128, '0', '1111');
 	print_akey(256, 192, '0', '0000'); ?> 
-	#ml16 {
+	#lkm1 {
 		left: 224px;
 		top: 256px; }
-	#ml17 {
+	#lkm2 {
 		left: 256px;
 		top: 320px; }
-	#ml18 {
+	#lkm3 {
 		left: 288px;
 		top: 384px; }
+	<? # todo dry ?>
+	#lkm1 { <?
+		if ($_GET['texture'] != 'vhex') { ?> 
+			background: url('/vfence/export/m1.png');<?
+		} ?> 
+	}
+	#lkm2 { <?
+		if ($_GET['texture'] != 'vhex') { ?> 
+			background: url('/vfence/export/m2.png');<?
+		} ?> 
+	}
+	#lkm3 { <?
+		if ($_GET['texture'] != 'vhex') { ?> 
+			background: url('/vfence/export/m3.png');<?
+		} ?> 
+	}
+	#lkm1, #lkm2, #lkm3 {
+		opacity: .2;
+	} 
 /* mix */
 	#r01, #l01, #r02, #l02, #r03, #l03, #r04, #l04,
 	#r05, #l05, #r06, #l06, #r07, #l07, #r08, #l08,
 	#r09, #l09, #r10, #l10, #r11, #l11, #r12, #l12,
 	#r13, #l13, #r14, #l14, #r15, #l15, #r00, #l00,
-	#mr16, #ml16, #mr17, #ml17, #mr18, #ml18, #rlmxx {
-		opacity: .2;
-		background-size: 24px 24px;
-		background-position:  50% 75%;<?
+	#rkm1, #lkm1, #rkm2, #lkm2, #rkm3, #lkm3, #rlmxx {
+		opacity: .2; <?
+		if ($_GET['texture'] == 'vhex') { ?> 
+			background-size: 24px 24px;
+			background-position:  50% 75%;<?
+		}
+		else { ?> 
+			background-size: 56px 56px;
+			background-position: 5% -5%;<?
+		}
 		if (in_array($_GET['keymap'], $config['nobraille']))
 			echo "\n" . 'display: none;'; ?> }
-	#mr16, #mri16, #ml16, #mli16,
-	#mr17, #mri17, #ml17, #mli17,
-	#mr18, #mri18, #ml18, #mli18 {
+	#mri16, #mli16,
+	#mri17, #mli17,
+	#mri18, #mli18 {
 		opacity: 1; } 
-	#mr16, #ml16,
-	#mr17, #ml17,
-	#mr18, #ml18,
+	#rkm1, #lkm1,
+	#rkm2, #lkm2,
+	#rkm3, #lkm3,
 	#rlmxx {
 		display: block; }
 /* maintain borders on android 320px width devices */

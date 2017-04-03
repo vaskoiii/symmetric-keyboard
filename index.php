@@ -1,6 +1,9 @@
 <?
 # author: vaskoiii
 # description: software implementation of symmetric keyboard
+
+# todo 
+
 include('config.php');
 $keymap = array();
 $keymap_text = array();
@@ -22,6 +25,38 @@ $keymap_text_json = json_encode($keymap_text);
 function to_html($s1) {
 	return htmlentities($s1);
 }
+function print_mkey($side, $key) {
+	$s1 = 'l';
+	if ($side == '1')
+		$s1 = 'r';
+	# binary representation?
+	$s2 = $key; ?> 
+	<div id="<?= $s1; ?>km<?= $s2; ?>">
+		<div id="<?= $s1; ?>tm<?= $s2; ?>"></div>
+		<div id="<?= $s1; ?>cm<?= $s2; ?>"><?
+			switch($key) {
+				case '1':
+				case '2':
+				case '3': ?> 
+					<img src="vhex/export/0<?= $key; ?>.png" /><?
+				break; 
+				case '4':
+					# just do easy !empty test
+					switch($side) {
+						case '0': ?> 
+							&#8644;
+							<!-- U+21C4 --><?
+						break;
+						case '1': ?> 
+							&#8646;
+							<!-- U+21C6 --><?
+						break;
+					}
+				break;
+			} ?> 
+		</div>
+	</div><?
+}
 function print_key($side, $key) {
 	$s1 = 'l';
 	if ($side == '1')
@@ -41,8 +76,13 @@ function print_akey($left, $top, $side, $key) {
 		left: <?= $left; ?>px;
 		top: <?= $top; ?>px;
 		}
-		#<?= $s1 . $s2; ?> {
-			background: url('vhex/export/<?= $s2; ?>.png') no-repeat center;
+		#<?= $s1 . $s2; ?> { <?
+			if ($_GET['texture'] == 'vhex') { ?> 
+				background: url('vhex/export/<?= $s2; ?>.png') no-repeat center;<?
+			}
+			else { ?> 
+				background: url('vfence/export/<?= $s2; ?>.png') no-repeat center;<?
+			} ?> 
 		}<?
 }
 function ptkey($side, $key) {
@@ -282,26 +322,17 @@ else
 		print_key('0', '1100');
 		print_key('0', '1101');
 		print_key('0', '1110');
-		print_key('0', '1111'); ?> 
-		<!-- meta -->
-		<div id="ml16"><img src="vhex/export/01.png" /></div>
-		<div id="ml17"><img src="vhex/export/02.png" /></div>
-		<div id="ml18"><img src="vhex/export/03.png" /></div>
-		<div id="lswap">
-			&rarr;
-			<br />
-			&larr;
-		</div>
+		print_key('0', '1111');
+		# meta
+		print_mkey('0', '1');
+		print_mkey('0', '2');
+		print_mkey('0', '3');
+		print_mkey('0', '4'); ?> 
 		<div id="lclear">cut</div>
 		<div id="loption">opt</div>
 	</div>
-	</div><?/*
-	<div id="extra">
-		<div id="clear">Cut</div>
-		<!-- <div id="cswap">Swap</div> -->
-		<div id="option">Option</div>
 	</div>
-	*/?><div id="right_base">
+	<div id="right_base">
 	<div id="right"><?
 		print_key('1', '0000');
 		print_key('1', '0001');
@@ -318,16 +349,12 @@ else
 		print_key('1', '1100');
 		print_key('1', '1101');
 		print_key('1', '1110');
-		print_key('1', '1111'); ?> 
-		<!-- meta -->
-		<div id="mr16"><img src="vhex/export/01.png" /></div>
-		<div id="mr17"><img src="vhex/export/02.png" /></div>
-		<div id="mr18"><img src="vhex/export/03.png" /></div>
-		<div id="rswap">
-			&larr;
-			<br />
-			&rarr;
-		</div>
+		print_key('1', '1111');
+		# meta
+		print_mkey('1', '1');
+		print_mkey('1', '2');
+		print_mkey('1', '3');
+		print_mkey('1', '4'); ?> 
 		<div id="rclear">cut</div>
 		<div id="roption">opt</div>
 	</div>
@@ -483,17 +510,19 @@ else
 		ptkey('1', '1110');
 		ptkey('1', '1111');
 		# meta
-		ptmeta('ml16', '01');
-		ptmeta('ml17', '10');
-		ptmeta('ml18', '11');
-		ptmeta('mr16', '01');
-		ptmeta('mr17', '10');
-		ptmeta('mr18', '11');
+		ptmeta('lkm1', '01');
+		ptmeta('lkm2', '10');
+		ptmeta('lkm3', '11');
+		ptmeta('rkm1', '01');
+		ptmeta('rkm2', '10');
+		ptmeta('rkm3', '11');
 		# swap
-		ptswap('lswap');
-		ptswap('rswap');
+		ptswap('lkm4');
+		ptswap('rkm4');
+		# clear
 		ptclear('lclear');
 		ptclear('rclear');
+		# option
 		ptoption('loption');
 		ptoption('roption'); ?> 
 		// dont hide typing output
