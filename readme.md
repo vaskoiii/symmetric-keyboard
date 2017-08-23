@@ -10,6 +10,12 @@ Pairing 2 "1 Handed" keyboards facilitates 2 handed typing for faster operation.
 
 ![Paired One-Handed Symmetric Keyboards with Hexagonal Keys](/vhex/export/hexboard.png)
 
+Hardware Version
+----------------
+A separate hardware version of this keyboard has been created in the ./hardware/ohmboard/ directory, which implements additional keys including:
+* control / shift / alt / gui
+* arrow keys / pgup / pgdn
+
 Custom Keymaps
 --------------
 Create your own keymap design from:
@@ -33,12 +39,6 @@ Additional locking modes are intended to be removed in favor of a constant thumb
 * caps lock
 * num lock
 * scroll lock
-
-Some keys are intended to be replaced by "command mode" (not yet implemented) including:
-* control
-* shift
-* alt
-* meta
 
 "Spacebar" was changed to a normal key to increase key combination mobility.
 
