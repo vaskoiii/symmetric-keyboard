@@ -69,7 +69,8 @@ const int bp19 = 23; // m3
 // TODO better way?
 // map button press to spiral numbering for use with keymap array
 
-/* left
+// left
+/*
 	const int bi0 = 5; 
 	const int bi1 = 6; 
 	const int bi2 = 7; 
@@ -92,7 +93,8 @@ const int bp19 = 23; // m3
 	const int bi19 = 0; // m3
 // */
 
-// /* right
+// right
+// /*
 	const int bi0 = 0; // m3 
 	const int bi1 = 0;  // m2
 	const int bi2 = 0;  // m1
@@ -267,7 +269,7 @@ const uint16_t keymap[4][2][16] = {
 			KEY_X // 1111
 		},
 		{ // 1
-			'X', // 0000
+			KEY_X, // 0000
 			KEY_SEMICOLON, // shifted to : // 0001
 			KEY_QUOTE, // shifted to " // 0010
 			KEY_1, // shifted to ! // 0011
@@ -428,7 +430,7 @@ const int shiftmap[4][2][16] = {
 			2 // 1111
 		},
 		{ // 1
-			1, // 0000
+			2, // 0000
 			1, // 0001
 			1, // 0010
 			1, // 0011
