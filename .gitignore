@@ -1,5 +1,6 @@
 .*
 !.gitignore
+/hardware/ohmboard/build/
 !/hardware/ohmboard/build/.gitkeep
 config.php
 /hardware/ohmboard/ohmboard.sh

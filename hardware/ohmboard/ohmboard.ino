@@ -851,9 +851,9 @@ void loop() {
 		if (button14.fallingEdge()) { multi_mod(bi14); }
 		if (button15.fallingEdge()) { multi_mod(bi15); }
 		if (button16.fallingEdge()) { multi_mod(bi16); }
-		if (button16.fallingEdge()) { multi_mod(bi17); }
-		if (button16.fallingEdge()) { multi_mod(bi18); }
-		if (button16.fallingEdge()) { multi_mod(bi19); }
+		if (button17.fallingEdge()) { multi_mod(bi17); }
+		if (button18.fallingEdge()) { multi_mod(bi18); }
+		if (button19.fallingEdge()) { multi_mod(bi19); }
 	}
 
 	// placeholder if action needed on rising edge
