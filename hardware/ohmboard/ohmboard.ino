@@ -15,9 +15,6 @@
 
 #include <Bounce.h>
 
-int left = 2; // 1 = left ohmboard || 2 = right ohmboard
-// in addition to setting this toggle the corresponding global "left" or "right" section must also be commented out below
-
 // modifier
 int m1 = 0;
 int m2 = 0;
@@ -71,6 +68,7 @@ const int bp19 = 23; // m3
 
 // left
 /*
+	int left = 1;
 	const int bi0 = 5; 
 	const int bi1 = 6; 
 	const int bi2 = 7; 
@@ -95,6 +93,7 @@ const int bp19 = 23; // m3
 
 // right
 // /*
+	int left = 2;
 	const int bi0 = 0; // m3 
 	const int bi1 = 0;  // m2
 	const int bi2 = 0;  // m1
