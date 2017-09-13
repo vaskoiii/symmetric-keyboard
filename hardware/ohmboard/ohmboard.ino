@@ -204,7 +204,7 @@ const uint16_t keymap[4][2][16] = {
 
 	// .+*^= %XX-,
 	// 13579 86420
-	// {[<(   )>]}
+	// {[(<   >)]}
 	{ // 01
 		{ // 0
 			KEY_9, // 0000
@@ -212,8 +212,8 @@ const uint16_t keymap[4][2][16] = {
 			KEY_3, // 0010
 			KEY_5, // 0011
 			KEY_7, // 0100
-			KEY_9, // shifted to ( // 0101
 			KEY_COMMA, // shifted to < // 0110
+			KEY_9, // shifted to ( // 0101
 			KEY_LEFT_BRACE, // 0111
 			KEY_LEFT_BRACE, // shifted to { // 1000
 			KEY_PAGE_DOWN, // 1001
@@ -230,8 +230,8 @@ const uint16_t keymap[4][2][16] = {
 			KEY_2, // 0010
 			KEY_4, // 0011
 			KEY_6, // 0100
-			KEY_0, // shifted to ) // 0101
 			KEY_PERIOD, // shifted to > // 0110
+			KEY_0, // shifted to ) // 0101
 			KEY_RIGHT_BRACE, // 0111
 			KEY_RIGHT_BRACE, // shifted to } // 1000
 			KEY_PAGE_UP, // 1001
