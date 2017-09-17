@@ -96,6 +96,8 @@ function ptkey($side, $key) {
 			navigator.vibrate(<?= $vibrate; ?>);
 		if (did('<?= $s1; ?>i<?= $s2; ?>').innerHTML == '<small>bs</small>')
 			delete_output();
+		else if (did('<?= $s1; ?>i<?= $s2; ?>').innerHTML == '<small>sp</small>')
+			space_output();
 		else
 			pout(current, '<?= $side; ?>', '<?= $key; ?>', keymap, keymap_text, mirror);
 		e.preventDefault()
@@ -183,6 +185,16 @@ function ptoption($s1) { ?>
 	# php to use php variables
 	include('style.php'); ?> 
 <script>
+	// special
+	function space_output() {
+		var o1 = document.createElement('span');
+		var o2 = document.getElementById('output');
+		o1.innerHTML = '&nbsp;';
+		o2.appendChild(o1);
+		// var o3 = document.createTextNode('\u00a0');
+		var o3 = document.createTextNode(' ');
+		did('output_text').appendChild(o3);
+	}
 	function delete_output() {
 		var elem = document.getElementById('output').lastChild;
 		elem.parentNode.removeChild(elem);
@@ -230,11 +242,6 @@ function ptoption($s1) { ?>
 		if (1) { 
 			// enable ouptut cutting on opera
 			var s1 = keymap_text[meta][side][key];
-			switch (s1) {
-				case '\u00a0':
-					s1 = ' '; // breakable spaces for cutting
-				break;
-			}
 			var o3 = document.createTextNode(s1);
 			did('output_text').appendChild(o3);
 		}
