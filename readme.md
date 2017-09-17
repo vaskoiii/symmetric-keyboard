@@ -4,7 +4,7 @@ Using one hand and a mirror key that acts as an accessibility button (ie. foot p
 
 Pairing 2 ohmboards facilitates 2-handed typing for faster operation and does not require use of the mirror key. If pairing 2 hardware ohmboards, the mirror keys can still be implemented as foot pedals for more flexible typing.
 
-Ohmboard Demo
+Demo Ohmboard
 -------------
 See: (http://keyboard.vaskos.com)
 
@@ -17,7 +17,7 @@ See: (http://keyboard.vaskos.com)
 * pointer = __
 * thumb = (bottom 3 keys)
 
-Touchscreen Version
+Touchscreen Ohmboard
 -------------------
 Ideally this implentation would be 100% js but it also requires: 
 * php
@@ -32,10 +32,10 @@ Create your own keymap design from:
 
 Any html can be used for the individual keys including 24px by 24px images.
 
-Hardware Version
+Hardware Ohmboard
 ----------------
 To be practical on existing operating systems the hardware version implements additional functionality with:
 * control / shift / alt / gui
 * arrow keys / pgup / pgdn
 
-See: ./hardware/ohmboard/
+See: [hardware/ohmboard/](hardware/ohmboard/)
