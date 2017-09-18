@@ -13,6 +13,15 @@
 // teensyduino: You must select Keyboard from the "Tools > USB Type" menu
 // or you can hack boards.txt with the build menu options you want and use arduino-builder from command line. see: ohmboard.sh
 
+// setup a teensyduino typecast hardcode to avoid the warnings in:
+// ../arduino-1.8.2/hardware/teensy/avr/cores/teensy3/usb_keyboard.h
+// changed:
+// void set_key1(uint8_t c) { keyboard_keys[0] = c; }
+// to:
+// void set_key1(uint16_t c) { keyboard_keys[0] = (uint8_t)c; }
+// looks like the file already had:
+// void set_modifier(uint16_t c) { keyboard_modifier_keys = (uint8_t)c; }
+
 #include <Bounce.h>
 
 // modifier
@@ -551,8 +560,6 @@ void chord_mod(const int &bpx) {
 		Keyboard.set_modifier(MODIFIERKEY_SHIFT | keyboard_modifier_keys);
 
 	if  (1) {
-		// setup a hardcode on the function to avoid the warning! see:
-		// ../arduino-1.8.2/hardware/teensy/avr/cores/teensy3/usb_keyboard.h
 		Keyboard.set_key1(keymap[i1][i2][bpx]);
 
 		Keyboard.send_now();
