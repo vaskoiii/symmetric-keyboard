@@ -1,6 +1,6 @@
 touchscreen ohmboard (one-handed-mirror board) implementation.
 
-if wanting to create a hardware ohmboard instead see:
+if wanting to create a hardware ohmboard instead, see:
 https://wiki.vaskos.com/vaskos-diy-keyboard 
 
 # demo
@@ -20,3 +20,6 @@ create your own keymap design from:
 * keymap/template.php
 
 any html can be used for the individual keys including 24px by 24px images.
+
+# custom embossing
+todo: allow creating custom embossing for the individual keys ie) braille
