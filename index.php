@@ -311,6 +311,24 @@ else
 <div id="output_anchor">
 	<div id="output"></div>
 </div>
+<style>
+	#left_foot,
+	#right_foot {
+		position: absolute;
+		top: 0px;
+		border-radius: 0;
+		border: 1px dotted;
+		background: #fff;
+		}
+	#left_foot {
+		left: 0px;
+		}
+	#right_foot {
+		right: 0px;
+		}
+</style>
+<div id="left_foot">foot<br />&#8644;</div>
+<div id="right_foot">foot<br />&#8646;</div>
 <div id="both">
 	<div id="left_base">
 	<div id="left"><?
@@ -526,6 +544,9 @@ else
 		# swap
 		ptswap('lkm4');
 		ptswap('rkm4');
+		# foot
+		ptswap('left_foot');
+		ptswap('right_foot');
 		# clear
 		ptclear('lclear');
 		ptclear('rclear');
