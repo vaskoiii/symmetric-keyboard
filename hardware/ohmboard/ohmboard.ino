@@ -29,7 +29,7 @@ int m1 = 0;
 int m2 = 0;
 int m3 = 0;
 
-unsigned int timeout = 2000;
+unsigned int timeout = 1000;
 elapsedMillis timer;
 
 int b1 = 2;
