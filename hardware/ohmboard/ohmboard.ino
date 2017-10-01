@@ -24,26 +24,35 @@
 
 #include <Bounce.h>
 
+// todo easy left/right toggle
+// what half of the keyboard is currently set below
+
+// timeout
+// lower timeout means less likely chance of accidentally hitting a modifier key combo
+// start higher and decrease until unable to do modifier key combos
+// 2000 too long
+// 1000 works good for beginners
+// 0500 better once dexterity increases
+unsigned int timeout = 1000;
+
+// debounce time (dt)
+// lower debounce time means being able to hit keys faster
+// start lower and increase if a button is too "sensitive"
+// 160 too slow / feels like keys are heavy and unresponsive
+// 080 works happy spot
+// 040 maybe the max
+// 020 too many double keypresses
+int dt = 80;
+
+// break-in/initial setup config is intended to be above this line
+
 // modifier
 int m1 = 0;
 int m2 = 0;
 int m3 = 0;
 
-unsigned int timeout = 1000;
 elapsedMillis timer;
-
 int b1 = 2;
-
-// TODO test times on the gmyle keys
-// times below are for the aluminum sandwitched keys (maybe boxcave keys)
-// crappy keys need a pretty high debounce time
-// debounce time start at 10 (ms) and increase if a button is too "sensitive"
-int dt = 80;
-// 160 too slow feels like keys are heavy and unresponsive
-// 080 works happy spot
-// 040 maybe the max
-// 020 too many double keypresses
-// most accuracy seems to be in the range of 20 - 80
 
 const int bp0 = 0; 
 const int bp1 = 1; 
