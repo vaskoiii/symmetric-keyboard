@@ -220,53 +220,11 @@ const uint16_t keymap[4][2][16] = {
 		}
 	},
 
-	// .+*^= %XX-,
-	// 13579 86420
-	// }])>   <([{
-	{ // 01
-		{ // 0
-			KEY_9, // 0000
-			KEY_1, // 0001
-			KEY_3, // 0010
-			KEY_5, // 0011
-			KEY_7, // 0100
-			KEY_PERIOD, // shifted to > // 0110
-			KEY_0, // shifted to ) // 0101
-			KEY_RIGHT_BRACE, // 0111
-			KEY_RIGHT_BRACE, // shifted to } // 1000
-			KEY_PAGE_DOWN, // 1001
-			KEY_TAB, //  1010
-			KEY_PERIOD, // 1011
-			KEY_EQUAL, // shifted to + // 1100
-			KEY_8, // shifted to * // 1101
-			KEY_6, // shifted to ^ // 1110
-			KEY_EQUAL // 1111
-		},
-		{ // 1
-			KEY_8, // 0000
-			KEY_0, // 0001
-			KEY_2, // 0010
-			KEY_4, // 0011
-			KEY_6, // 0100
-			KEY_COMMA, // shifted to < // 0110
-			KEY_9, // shifted to ( // 0101
-			KEY_LEFT_BRACE, // 0111
-			KEY_LEFT_BRACE, // shifted to { // 1000
-			KEY_PAGE_UP, // 1001
-			KEY_TAB, // shifted to "shift tab" // TODO reverse tab possible? // 1010
-			KEY_COMMA, // 1011
-			KEY_MINUS, // 1100
-			KEY_X, // TODO &divide; // 1101
-			KEY_X, // TODO &radic; // 1110
-			KEY_5 // shifted to % // 1111
-		}
-	},
-
 	// TODO finalize keymap
 	// x#$_x x|&@x
 	// ;'?\x x/!":
 	//  xx`x x~xx
-	{ // 10
+	{ // 01
 		{ // 0
 			KEY_X, // 0000
 			KEY_SEMICOLON, // 0001
@@ -302,6 +260,48 @@ const uint16_t keymap[4][2][16] = {
 			KEY_7, // shifted to & // 1101
 			KEY_BACKSLASH, // shifted to | // 1110
 			KEY_X // 1111
+		}
+	},
+
+	// .+*^= %XX-,
+	// 13579 86420
+	// }])>   <([{
+	{ // 10
+		{ // 0
+			KEY_9, // 0000
+			KEY_1, // 0001
+			KEY_3, // 0010
+			KEY_5, // 0011
+			KEY_7, // 0100
+			KEY_PERIOD, // shifted to > // 0110
+			KEY_0, // shifted to ) // 0101
+			KEY_RIGHT_BRACE, // 0111
+			KEY_RIGHT_BRACE, // shifted to } // 1000
+			KEY_PAGE_DOWN, // 1001
+			KEY_TAB, //  1010
+			KEY_PERIOD, // 1011
+			KEY_EQUAL, // shifted to + // 1100
+			KEY_8, // shifted to * // 1101
+			KEY_6, // shifted to ^ // 1110
+			KEY_EQUAL // 1111
+		},
+		{ // 1
+			KEY_8, // 0000
+			KEY_0, // 0001
+			KEY_2, // 0010
+			KEY_4, // 0011
+			KEY_6, // 0100
+			KEY_COMMA, // shifted to < // 0110
+			KEY_9, // shifted to ( // 0101
+			KEY_LEFT_BRACE, // 0111
+			KEY_LEFT_BRACE, // shifted to { // 1000
+			KEY_PAGE_UP, // 1001
+			KEY_TAB, // shifted to "shift tab" // TODO reverse tab possible? // 1010
+			KEY_COMMA, // 1011
+			KEY_MINUS, // 1100
+			KEY_X, // TODO &divide; // 1101
+			KEY_X, // TODO &radic; // 1110
+			KEY_5 // shifted to % // 1111
 		}
 	},
 
@@ -393,45 +393,6 @@ const int shiftmap[4][2][16] = {
 			2, // 0000
 			2, // 0001
 			2, // 0010
-			2, // 0011
-			2, // 0100
-			1, // 0101
-			1, // 0110
-			2, // 0111
-			1, // 1000
-			2, // 1001
-			2, // 1010
-			2, // 1011
-			1, // 1100
-			1, // 1101
-			1, // 1110
-			2 // 1111
-		},
-		{ // 1
-			2, // 0000
-			2, // 0001
-			2, // 0010
-			2, // 0011
-			2, // 0100
-			1, // 0101
-			1, // 0110
-			2, // 0111
-			1, // 1000
-			2, // 1001
-			1, // 1010
-			2, // 1011
-			2, // 1100
-			2, // 1101
-			2, // 1110
-			1 // 1111
-		}
-	},
-
-	{ // 10
-		{ // 0
-			2, // 0000
-			2, // 0001
-			2, // 0010
 			1, // 0011
 			2, // 0100
 			2, // 0101
@@ -463,6 +424,45 @@ const int shiftmap[4][2][16] = {
 			1, // 1101
 			1, // 1110
 			2 // 1111
+		}
+	},
+
+	{ // 10
+		{ // 0
+			2, // 0000
+			2, // 0001
+			2, // 0010
+			2, // 0011
+			2, // 0100
+			1, // 0101
+			1, // 0110
+			2, // 0111
+			1, // 1000
+			2, // 1001
+			2, // 1010
+			2, // 1011
+			1, // 1100
+			1, // 1101
+			1, // 1110
+			2 // 1111
+		},
+		{ // 1
+			2, // 0000
+			2, // 0001
+			2, // 0010
+			2, // 0011
+			2, // 0100
+			1, // 0101
+			1, // 0110
+			2, // 0111
+			1, // 1000
+			2, // 1001
+			1, // 1010
+			2, // 1011
+			2, // 1100
+			2, // 1101
+			2, // 1110
+			1 // 1111
 		}
 	},
 
