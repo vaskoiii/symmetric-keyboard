@@ -138,7 +138,8 @@ function ptswap($id) {
 		e.preventDefault()
 	}, false) <?
 }
-function ptclear($s1) { ?> 
+function ptclear($s1) {
+	global $vibrate; ?> 
 	did('<?= to_html($s1); ?>').addEventListener('touchstart', function(e){
 		if (vibrate == 1)
 			navigator.vibrate(<?= $vibrate; ?>);
@@ -154,7 +155,8 @@ function ptclear($s1) { ?>
 		e.preventDefault()
 	}, false) <?
 }
-function ptoption($s1) { ?> 
+function ptoption($s1) {
+	global $vibrate; ?> 
 	did('<?= to_html($s1); ?>').addEventListener('touchstart', function(e){
 		if (vibrate == 1)
 			navigator.vibrate(<?= $vibrate; ?>);
