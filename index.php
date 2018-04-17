@@ -9,6 +9,8 @@ $keymap = array();
 $keymap_text = array();
 if (empty($_GET['keymap']))
 	$_GET['keymap'] = $config['keymap'][0];
+if (empty($_GET['texture']))
+	$_GET['texture'] = '';
 if (in_array($_GET['keymap'], $config['keymap']))
 	include('keymap/' . $_GET['keymap'] . '.php');
 foreach ($keymap as $k1 => $v1) {
