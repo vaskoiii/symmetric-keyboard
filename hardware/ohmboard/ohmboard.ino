@@ -7,8 +7,10 @@
 // TODO double thumb press ie. kupfer ctrl space?
 // TODO mod keys should be able to be vi <leader> keys?
 // TODO setup i2c to accept modifiers from the other half of the keyboard?
+// reverse tab/enter/space where whitespace is created opposite to the normal direction
 
 // utf-8 keystrokes not possible with the usb keyboard standard?
+// TODO non-ascii support ie) obelus, radical sign (os tweak?)
 
 // teensyduino: You must select Keyboard from the "Tools > USB Type" menu
 // or you can hack boards.txt with the build menu options you want and use arduino-builder from command line. see: ohmboard.sh
@@ -24,16 +26,13 @@
 
 #include <Bounce.h>
 
-// todo easy left/right toggle
-// what half of the keyboard is currently set below
-
 // timeout
 // lower timeout means less likely chance of accidentally hitting a modifier key combo
 // start higher and decrease until unable to do modifier key combos
 // 2000 too long
 // 1000 works good for beginners
 // 0500 better once dexterity increases
-unsigned int timeout = 1000;
+unsigned int timeout = 500;
 
 // debounce time (dt)
 // lower debounce time means being able to hit keys faster
@@ -42,7 +41,7 @@ unsigned int timeout = 1000;
 // 080 works happy spot
 // 040 maybe the max
 // 020 too many double keypresses
-int dt = 80;
+int dt = 40;
 
 // break-in/initial setup config is intended to be above this line
 
@@ -77,15 +76,19 @@ const int bp19 = 23; // m3
 // pins saved for SCL0 SDA0 (i2c expansion)
 // 18
 // 19
+// additional unused pins
+// 13 LED
+// 14 TODO ground for right left hardware keyboard toggle?
 
-// TODO easy left/right toggle for mod keys
+// TODO easy left/right toggle ie) using a hardware jumper
 
 // comment out the corresponding section (can only have 1 global definition)
 // TODO better way?
 // map button press to spiral numbering for use with keymap array
+// TOOD ascii art with spiral numbering
 
 // left
-/*
+// /*
 	int left = 1;
 	const int bi0 = 5; 
 	const int bi1 = 6; 
@@ -110,7 +113,7 @@ const int bp19 = 23; // m3
 // */
 
 // right
-// /*
+/*
 	int left = 2;
 	const int bi0 = 0; // m3 
 	const int bi1 = 0;  // m2
@@ -162,22 +165,29 @@ Bounce button19 = Bounce(bp19, dt);
 // ins
 // home
 // end
+// TODO document alternate key combos/solutions if not using these keys
+
+// convention
+// - right hand is forward: left to right top to bottom
+// - left hand is backward: right to left bottom to top
 
 // invisibles: desired mappings/navigationability
-// main
-//  space/backspace
+// m0 (no modifiers)
+//  backspace/space (reversed from normal qwerty to keep convention)
 //  escape/enter
-// alternate (reversed)
-//  tab/shift-tab
-//  pgdn/pgup
-// arrows
-//  right/left
-//  down/up
-// arrows shifted
-//  shift-right/shift-left
-//  shift-down/shift-up
+// m1
+//  left/right
+//  up/down
+// m2
+//  shift-tab/tab
+//  pgup/pgdn
+// m3
+//  shift-left/shift-right
+//  shift-up/shift-down
 
 // TODO better solution that putting KEY_X in the available mappings?
+
+// TODO finalize keymap after real world testing
 
 // https://www.pjrc.com/teensy/td_keyboard.html
 const uint16_t keymap[4][2][16] = {
@@ -193,7 +203,7 @@ const uint16_t keymap[4][2][16] = {
 			KEY_Z, // 0111
 			KEY_X, // 1000
 			KEY_ESC, // 1001
-			KEY_SPACE, // 1010
+			KEY_BACKSPACE, // 1010
 			KEY_Q, // 1011
 			KEY_W, // 1100
 			KEY_E, // 1101
@@ -211,7 +221,7 @@ const uint16_t keymap[4][2][16] = {
 			KEY_N, // 0111
 			KEY_X, // 1000
 			KEY_ENTER, // 1001
-			KEY_BACKSPACE, // 1010
+			KEY_SPACE, // 1010
 			KEY_P, // 1011
 			KEY_O, // 1100
 			KEY_I, // 1101
@@ -219,89 +229,82 @@ const uint16_t keymap[4][2][16] = {
 			KEY_Y // 1111
 		}
 	},
-
-	// TODO finalize keymap
-	// x#$_x x|&@x
-	// ;'?\x x/!":
-	//  xx`x x~xx
+	// TODO ascii art for these keymappings
 	{ // 01
 		{ // 0
-			KEY_X, // 0000
-			KEY_SEMICOLON, // 0001
-			KEY_QUOTE, // 0010
-			KEY_SLASH, // shifted to ? // 0011
-			KEY_BACKSLASH, // 0100
-			KEY_X, // TODO copyleft // 0101
-			KEY_TILDE, // pjrc mislabelled (should be KEY_GRAVE) // shifted to get ~ // 0110
-			KEY_X, // 0111
-			KEY_X, // 1000
-			KEY_DOWN, //  1001
-			KEY_RIGHT, // 1010
-			KEY_X, // TODO pi // 1011
-			KEY_3, // shifted to # // 1100
-			KEY_4, // shifted to $ // 1101
-			KEY_MINUS, // shifted to _ // 1110
-			KEY_X // 1111
+			/*0000*/ KEY_X,
+			/*0001*/ KEY_TILDE, // pjrc mislabelled (should be KEY_GRAVE) // actually `
+			/*0010*/ KEY_EQUAL,
+			/*0011*/ KEY_QUOTE,
+			/*0100*/ KEY_SEMICOLON, // shift :
+			/*0101*/ KEY_LEFT_BRACE,
+			/*0110*/ KEY_COMMA, // shift <
+			/*0111*/ KEY_X,
+			/*1000*/ KEY_X,
+			/*1001*/ KEY_UP,
+			/*1010*/ KEY_LEFT,
+			/*1011*/ KEY_X,
+			/*1100*/ KEY_3, // shift #
+			/*1101*/ KEY_4, // shift $
+			/*1110*/ KEY_1, // shift !
+			/*1111*/ KEY_5 // shift %
 		},
 		{ // 1
-			KEY_X, // 0000
-			KEY_SEMICOLON, // shifted to : // 0001
-			KEY_QUOTE, // shifted to " // 0010
-			KEY_1, // shifted to ! // 0011
-			KEY_SLASH, // 0100
-			KEY_X, // TODO infinty // 0101
-			KEY_TILDE, // pjrc mislabelled (should be KEY_GRAVE) // actually ` // 0110
-			KEY_X, // 0111
-			KEY_X, // 1000
-			KEY_UP, //  1001
-			KEY_LEFT, // 1010
-			KEY_X, // TODO degree // 1011
-			KEY_2, // shifted to @ // 1100
-			KEY_7, // shifted to & // 1101
-			KEY_BACKSLASH, // shifted to | // 1110
-			KEY_X // 1111
+			/*0000*/ KEY_X,
+			/*0001*/ KEY_TILDE, // pjrc mislabelled (should be KEY_GRAVE) // shift ~
+			/*0010*/ KEY_MINUS, // shift _
+			/*0011*/ KEY_QUOTE, // shift "
+			/*0100*/ KEY_SEMICOLON,
+			/*0101*/ KEY_RIGHT_BRACE,
+			/*0110*/ KEY_PERIOD, // shift >
+			/*0111*/ KEY_X,
+			/*1000*/ KEY_X,
+			/*1001*/ KEY_DOWN,
+			/*1010*/ KEY_RIGHT,
+			/*1011*/ KEY_X,
+			/*1100*/ KEY_2, // shift @
+			/*1101*/ KEY_7, // shift &
+			/*1110*/ KEY_SLASH, // shift ?
+			/*1111*/ KEY_BACKSLASH // shift |
 		}
 	},
-
-	// .+*^= %XX-,
-	// 13579 86420
-	// }])>   <([{
+	// TODO ascii art for these keymappings
 	{ // 10
 		{ // 0
-			KEY_9, // 0000
-			KEY_1, // 0001
-			KEY_3, // 0010
-			KEY_5, // 0011
-			KEY_7, // 0100
-			KEY_PERIOD, // shifted to > // 0110
-			KEY_0, // shifted to ) // 0101
-			KEY_RIGHT_BRACE, // 0111
-			KEY_RIGHT_BRACE, // shifted to } // 1000
-			KEY_PAGE_DOWN, // 1001
-			KEY_TAB, //  1010
-			KEY_PERIOD, // 1011
-			KEY_EQUAL, // shifted to + // 1100
-			KEY_8, // shifted to * // 1101
-			KEY_6, // shifted to ^ // 1110
-			KEY_EQUAL // 1111
+			/*0000*/ KEY_X,
+			/*0001*/ KEY_0,
+			/*0010*/ KEY_2,
+			/*0011*/ KEY_4,
+			/*0100*/ KEY_6,
+			/*0101*/ KEY_9, // shift (
+			/*0110*/ KEY_LEFT_BRACE, // shift {
+			/*0111*/ KEY_X,
+			/*1000*/ KEY_X,
+			/*1001*/ KEY_PAGE_UP,
+			/*1010*/ KEY_TAB, // shift "shift tab"
+			/*1011*/ KEY_BACKSLASH,
+			/*1100*/ KEY_SLASH,
+			/*1101*/ KEY_MINUS,
+			/*1110*/ KEY_PERIOD,
+			/*1111*/ KEY_8
 		},
 		{ // 1
-			KEY_8, // 0000
-			KEY_0, // 0001
-			KEY_2, // 0010
-			KEY_4, // 0011
-			KEY_6, // 0100
-			KEY_COMMA, // shifted to < // 0110
-			KEY_9, // shifted to ( // 0101
-			KEY_LEFT_BRACE, // 0111
-			KEY_LEFT_BRACE, // shifted to { // 1000
-			KEY_PAGE_UP, // 1001
-			KEY_TAB, // shifted to "shift tab" // TODO reverse tab possible? // 1010
-			KEY_COMMA, // 1011
-			KEY_MINUS, // 1100
-			KEY_X, // TODO &divide; // 1101
-			KEY_X, // TODO &radic; // 1110
-			KEY_5 // shifted to % // 1111
+			/*0000*/ KEY_X,
+			/*0001*/ KEY_1,
+			/*0010*/ KEY_3,
+			/*0011*/ KEY_5,
+			/*0100*/ KEY_7,
+			/*0101*/ KEY_0, // shift )
+			/*0111*/ KEY_RIGHT_BRACE, // shift }
+			/*1000*/ KEY_X,
+			/*1001*/ KEY_X,
+			/*1010*/ KEY_PAGE_DOWN,
+			/*1011*/ KEY_TAB,
+			/*1100*/ KEY_6, // shift ^
+			/*1101*/ KEY_8, // shift *
+			/*1101*/ KEY_EQUAL, // shift +
+			/*1110*/ KEY_COMMA,
+			/*1111*/ KEY_9
 		}
 	},
 
@@ -317,8 +320,8 @@ const uint16_t keymap[4][2][16] = {
 			KEY_X, // 0110 // actual X
 			KEY_Z, // 0111
 			KEY_X, // 1000
-			KEY_DOWN, //  1001
-			KEY_RIGHT, // 1010
+			KEY_UP, //  1001
+			KEY_LEFT, // 1010
 			KEY_Q, // 1011
 			KEY_W, // 1100
 			KEY_E, // 1101
@@ -335,8 +338,8 @@ const uint16_t keymap[4][2][16] = {
 			KEY_B, // 0110
 			KEY_N, // 0111
 			KEY_X, // 1000
-			KEY_UP, //  1001
-			KEY_LEFT, // 1010
+			KEY_DOWN, //  1001
+			KEY_RIGHT, // 1010
 			KEY_P, // 1011
 			KEY_O, // 1100
 			KEY_I, // 1101
@@ -393,8 +396,8 @@ const int shiftmap[4][2][16] = {
 			2, // 0000
 			2, // 0001
 			2, // 0010
-			1, // 0011
-			2, // 0100
+			2, // 0011
+			1, // 0100
 			2, // 0101
 			1, // 0110
 			2, // 0111
@@ -405,7 +408,7 @@ const int shiftmap[4][2][16] = {
 			1, // 1100
 			1, // 1101
 			1, // 1110
-			2 // 1111
+			1 // 1111
 		},
 		{ // 1
 			2, // 0000
@@ -414,7 +417,46 @@ const int shiftmap[4][2][16] = {
 			1, // 0011
 			2, // 0100
 			2, // 0101
-			2, // 0110
+			1, // 0110
+			2, // 0111
+			2, // 1000
+			2, // 1001
+			2, // 1010
+			2, // 1011
+			1, // 1100
+			1, // 1101
+			1, // 1110
+			1 // 1111
+		}
+	},
+
+	{ // 10
+		{ // 0
+			1, // 0000
+			2, // 0001
+			2, // 0010
+			2, // 0011
+			2, // 0100
+			1, // 0101
+			1, // 0110
+			2, // 0111
+			2, // 1000
+			2, // 1001
+			1, // 1010
+			2, // 1011
+			2, // 1100
+			2, // 1101
+			2, // 1110
+			2 // 1111
+		},
+		{ // 1
+			1, // 0000
+			2, // 0001
+			2, // 0010
+			2, // 0011
+			2, // 0100
+			1, // 0101
+			1, // 0110
 			2, // 0111
 			2, // 1000
 			2, // 1001
@@ -424,45 +466,6 @@ const int shiftmap[4][2][16] = {
 			1, // 1101
 			1, // 1110
 			2 // 1111
-		}
-	},
-
-	{ // 10
-		{ // 0
-			2, // 0000
-			2, // 0001
-			2, // 0010
-			2, // 0011
-			2, // 0100
-			1, // 0101
-			1, // 0110
-			2, // 0111
-			1, // 1000
-			2, // 1001
-			2, // 1010
-			2, // 1011
-			1, // 1100
-			1, // 1101
-			1, // 1110
-			2 // 1111
-		},
-		{ // 1
-			2, // 0000
-			2, // 0001
-			2, // 0010
-			2, // 0011
-			2, // 0100
-			1, // 0101
-			1, // 0110
-			2, // 0111
-			1, // 1000
-			2, // 1001
-			1, // 1010
-			2, // 1011
-			2, // 1100
-			2, // 1101
-			2, // 1110
-			1 // 1111
 		}
 	},
 
