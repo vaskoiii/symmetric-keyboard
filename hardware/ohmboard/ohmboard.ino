@@ -189,8 +189,21 @@ Bounce button19 = Bounce(bp19, dt);
 
 // TODO finalize keymap after real world testing
 
+// numbering corresponding to binary representation below
+//  a b c d         d c b a 
+// 9 1 2 3 e       e 3 2 1 9
+//  8 7 6 4 f     f 4 6 7 8 
+//       5 0       0 5      
+
+
 // https://www.pjrc.com/teensy/td_keyboard.html
 const uint16_t keymap[4][2][16] = {
+
+	// letter
+	//  ↼ q w e       i o p ⇀ 
+	// ↰ a s d r     u k l m ↳
+	//  x z x f t   y j b n x 
+	//       c g      h v     
 	{ // 00 
 		{ // 0
 			KEY_G, // 0000
@@ -229,7 +242,12 @@ const uint16_t keymap[4][2][16] = {
 			KEY_Y // 1111
 		}
 	},
-	// TODO ascii art for these keymappings
+
+	// symbol
+        //  ← x # $       & @ x → 
+        // ↑ ` = ' !     ? ' _ ~ ↓
+        //  x x < : %   | ; > x x 
+        //       [ x     x ]      
 	{ // 01
 		{ // 0
 			/*0000*/ KEY_X,
@@ -268,7 +286,12 @@ const uint16_t keymap[4][2][16] = {
 			/*1111*/ KEY_BACKSLASH // shift |
 		}
 	},
-	// TODO ascii art for these keymappings
+
+	// calculator
+	//  ↤ \ / -       + * ^ ↦ 
+	// ↥ 0 2 4 .     < 5 3 1 ↧
+	//  x x { 6 8   9 7 } x x 
+	//       ( x     x )      
 	{ // 10
 		{ // 0
 			/*0000*/ KEY_X,
@@ -308,7 +331,11 @@ const uint16_t keymap[4][2][16] = {
 		}
 	},
 
-	// all this section is shifted for capitalization
+	// letter/arrow shift
+	//  ⇦ Q W E       I O P ⇨ 
+	// ⇧ A S D R     U K L M ⇩
+	//  x Z X F T   Y J B N x 
+	//       C G     H V      
 	{ // 11
 		{ // 0
 			KEY_G, // 0000
