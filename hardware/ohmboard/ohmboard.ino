@@ -290,8 +290,8 @@ const uint16_t keymap[4][2][16] = {
 	// calculator
 	//  ↤ \ / -       + * ^ ↦ 
 	// ↥ 0 2 4 .     , 5 3 1 ↧
-	//  x x { 6 8   9 7 } x x 
-	//       ( x     x )      
+	//  x x ( 6 8   9 7 ) x x 
+	//       { x     x }      
 	{ // 10
 		{ // 0
 			/*0000*/ KEY_X,
@@ -299,8 +299,8 @@ const uint16_t keymap[4][2][16] = {
 			/*0010*/ KEY_2,
 			/*0011*/ KEY_4,
 			/*0100*/ KEY_6,
-			/*0101*/ KEY_9, // shift (
-			/*0110*/ KEY_LEFT_BRACE, // shift {
+			/*0101*/ KEY_LEFT_BRACE, // shift {
+			/*0110*/ KEY_9, // shift (
 			/*0111*/ KEY_X,
 			/*1000*/ KEY_X,
 			/*1001*/ KEY_PAGE_UP,
@@ -317,8 +317,8 @@ const uint16_t keymap[4][2][16] = {
 			/*0010*/ KEY_3,
 			/*0011*/ KEY_5,
 			/*0100*/ KEY_7,
-			/*0101*/ KEY_0, // shift )
-			/*0110*/ KEY_RIGHT_BRACE, // shift }
+			/*0101*/ KEY_RIGHT_BRACE, // shift }
+			/*0110*/ KEY_0, // shift )
 			/*0111*/ KEY_X,
 			/*1000*/ KEY_X,
 			/*1001*/ KEY_PAGE_DOWN,
