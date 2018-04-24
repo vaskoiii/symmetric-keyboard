@@ -245,14 +245,14 @@ const uint16_t keymap[4][2][16] = {
 
 	// symbol
         //  ← x # $       & @ x → 
-        // ↑ ` = ' !     ? ' _ ~ ↓
+        // ↑ ` _ ' !     ? " = ~ ↓
         //  x x < : %   | ; > x x 
         //       [ x     x ]      
 	{ // 01
 		{ // 0
 			/*0000*/ KEY_X,
 			/*0001*/ KEY_TILDE, // pjrc mislabelled (should be KEY_GRAVE) // actually `
-			/*0010*/ KEY_EQUAL,
+			/*0010*/ KEY_MINUS, // shift _
 			/*0011*/ KEY_QUOTE,
 			/*0100*/ KEY_SEMICOLON, // shift :
 			/*0101*/ KEY_LEFT_BRACE,
@@ -270,7 +270,7 @@ const uint16_t keymap[4][2][16] = {
 		{ // 1
 			/*0000*/ KEY_X,
 			/*0001*/ KEY_TILDE, // pjrc mislabelled (should be KEY_GRAVE) // shift ~
-			/*0010*/ KEY_MINUS, // shift _
+			/*0010*/ KEY_EQUAL,
 			/*0011*/ KEY_QUOTE, // shift "
 			/*0100*/ KEY_SEMICOLON,
 			/*0101*/ KEY_RIGHT_BRACE,
@@ -422,7 +422,7 @@ const int shiftmap[4][2][16] = {
 		{ // 0
 			2, // 0000
 			2, // 0001
-			2, // 0010
+			1, // 0010
 			2, // 0011
 			1, // 0100
 			2, // 0101
@@ -440,7 +440,7 @@ const int shiftmap[4][2][16] = {
 		{ // 1
 			2, // 0000
 			1, // 0001
-			1, // 0010
+			2, // 0010
 			1, // 0011
 			2, // 0100
 			2, // 0101
