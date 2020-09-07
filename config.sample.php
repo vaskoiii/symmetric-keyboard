@@ -1,4 +1,4 @@
-<?
+<?php
 # author: vaskoiii
 # description: available keymaps
 

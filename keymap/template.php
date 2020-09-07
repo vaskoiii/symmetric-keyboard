@@ -1,4 +1,4 @@
-<?
+<?php
 # author: vaskoiii
 # description: keymap definition to be used by the keyboard
 

@@ -1,4 +1,4 @@
-<?
+<?php
 # author: vaskoiii
 # description: software implementation of symmetric keyboard
 
@@ -35,29 +35,29 @@ function print_mkey($side, $key) {
 	$s2 = $key; ?> 
 	<div id="<?= $s1; ?>km<?= $s2; ?>">
 		<div id="<?= $s1; ?>tm<?= $s2; ?>"></div>
-		<div id="<?= $s1; ?>cm<?= $s2; ?>"><?
+		<div id="<?= $s1; ?>cm<?= $s2; ?>"><?php
 			switch($key) {
 				case '1':
 				case '2':
 				case '3': ?> 
-					<img src="vhex/export/0<?= $key; ?>.png" /><?
+					<img src="vhex/export/0<?= $key; ?>.png" /><?php
 				break; 
 				case '4':
 					# just do easy !empty test
 					switch($side) {
 						case '0': ?> 
 							&#8644;
-							<!-- U+21C4 --><?
+							<!-- U+21C4 --><?php
 						break;
 						case '1': ?> 
 							&#8646;
-							<!-- U+21C6 --><?
+							<!-- U+21C6 --><?php
 						break;
 					}
 				break;
 			} ?> 
 		</div>
-	</div><?
+	</div><?php
 }
 function print_key($side, $key) {
 	$s1 = 'l';
@@ -66,7 +66,7 @@ function print_key($side, $key) {
 	$s2 = str_pad(bindec($key), 2, '0', STR_PAD_LEFT); ?> 
 	<div id="<?= $s1; ?>o<?= $s2; ?>"></div>
 	<div id="<?= $s1; ?><?= $s2; ?>"></div>
-	<div id="<?= $s1; ?>i<?= $s2; ?>"></div><?
+	<div id="<?= $s1; ?>i<?= $s2; ?>"></div><?php
 	/*  onclick="pout(current, '<?= $side; ?>', '<?= $key; ?>', keymap, mirror);" */
 }
 function print_akey($left, $top, $side, $key) {
@@ -78,14 +78,14 @@ function print_akey($left, $top, $side, $key) {
 		left: <?= $left; ?>px;
 		top: <?= $top; ?>px;
 		}
-		#<?= $s1 . $s2; ?> { <?
+		#<?= $s1 . $s2; ?> { <?php
 			if ($_GET['texture'] == 'vhex') { ?> 
-				background: url('vhex/export/<?= $s2; ?>.png') no-repeat center;<?
+				background: url('vhex/export/<?= $s2; ?>.png') no-repeat center;<?php
 			}
 			else { ?> 
-				background: url('vfence/export/<?= $s2; ?>.png') no-repeat center;<?
+				background: url('vfence/export/<?= $s2; ?>.png') no-repeat center;<?php
 			} ?> 
-		}<?
+		}<?php
 }
 function ptkey($side, $key) {
 	global $vibrate;
@@ -106,7 +106,7 @@ function ptkey($side, $key) {
 	}, false)
 	did('<?= $s1; ?>i<?= $s2; ?>').addEventListener('touchend', function(e){
 		e.preventDefault()
-	}, false)<?
+	}, false)<?php
 }
 function ptmeta($button, $meta) {
 	global $vibrate; ?> 
@@ -121,7 +121,7 @@ function ptmeta($button, $meta) {
 		current = '00';
 		meta_mod(current, keymap, mirror);
 		e.preventDefault()
-	}, false)<?
+	}, false)<?php
 }
 function ptswap($id) {
 	global $vibrate; ?> 
@@ -138,7 +138,7 @@ function ptswap($id) {
 		// current = '00'
 		meta_mod(current, keymap, mirror);
 		e.preventDefault()
-	}, false) <?
+	}, false) <?php
 }
 function ptclear($s1) {
 	global $vibrate; ?> 
@@ -155,7 +155,7 @@ function ptclear($s1) {
 		}
 		did('output').innerHTML = '';
 		e.preventDefault()
-	}, false) <?
+	}, false) <?php
 }
 function ptoption($s1) {
 	global $vibrate; ?> 
@@ -174,18 +174,18 @@ function ptoption($s1) {
 			break;
 		}
 		e.preventDefault()
-	}, false) <?
+	}, false) <?php
 }
 ?><!doctype html>
 <html id="html">
 <head> 
-	<meta charset="utf-8"><?
+	<meta charset="utf-8"><?php
 	# 480px is the smallest screen that can fit the 64px by 64px keys but want to accomodate 320px
 	# 320/480 = 2/3
 	# rounding up seems to work fine
 	?>
 	<meta name="viewport" content="width=device-width, initial-scale=.7">
-	<title>Symmetric Keyboard</title><?
+	<title>Symmetric Keyboard</title><?php
 	# php to use php variables
 	include('style.php'); ?> 
 <script>
@@ -206,16 +206,16 @@ function ptoption($s1) {
 		elem_text.parentNode.removeChild(elem_text);
 	}
 	// global scope for keymap
-	<? # cant encode because already should be html ?>
+	<?php # cant encode because already should be html ?>
 	var keymap = <?= ($keymap_json); ?>;
-	var keymap_text = <?= ($keymap_text_json); ?>;<?
+	var keymap_text = <?= ($keymap_text_json); ?>;<?php
 	if (!empty($default['vibrate'])) {
 	switch ($default['vibrate']) {
 		case 'on': ?> 
-			var vibrate = 1; <?
+			var vibrate = 1; <?php
 		break;
 		default: ?> 
-			var vibrate = 2; <?
+			var vibrate = 2; <?php
 		break;
 	} } ?> 
 	var mirror = 2;
@@ -304,7 +304,7 @@ function ptoption($s1) {
 	// meta_mod('11', keymap, 2);
 </script>
 </head>
-<body><?
+<body><?php
 if ($debug != 1)
 	$s1 = ' position: absolute; margin-top: -999px;';
 else
@@ -335,7 +335,7 @@ else
 <div id="right_foot">foot<br />&#8646;</div>
 <div id="both">
 	<div id="left_base">
-	<div id="left"><?
+	<div id="left"><?php
 		print_key('0', '0000');
 		print_key('0', '0001');
 		print_key('0', '0010');
@@ -362,7 +362,7 @@ else
 	</div>
 	</div>
 	<div id="right_base">
-	<div id="right"><?
+	<div id="right"><?php
 		print_key('1', '0000');
 		print_key('1', '0001');
 		print_key('1', '0010');
@@ -470,18 +470,18 @@ else
 		<a href="javascript: choose_theme('light')">light</a>
 	</p>
 	<p id="choose_keymap">
-		keymap: <?
+		keymap: <?php
 		foreach ($config['keymap'] as $k1 => $v1) { ?> 
-			<a href="<?= htmlentities($_SERVER['PHP_SELF']); ?>?keymap=<?= htmlentities($v1); ?>"><?= htmlentities($v1); ?></a><?
+			<a href="<?= htmlentities($_SERVER['PHP_SELF']); ?>?keymap=<?= htmlentities($v1); ?>"><?= htmlentities($v1); ?></a><?php
 		} ?> 
-	</p><?
+	</p><?php
 	# vibration is lagged ?> 	
 	<!--
 	<p id="choose_vibrate">
 		change vibrate:
 		<a href="javascript: vibrate = 1;">on</a>
 		<a href="javascript: vibrate = 2;">off</a>
-	</p><?
+	</p><?php
 	# todo not implemented ?> 
 	<p id="choose_mode">
 		change mode:
@@ -503,7 +503,7 @@ else
 	// dont get keymap asynchronously (with ajax)
 	// keep keymap always loaded into local memory
 	meta_mod('00', keymap, mirror); 
-	window.addEventListener('load', function() { <?
+	window.addEventListener('load', function() { <?php
 		# left
 		ptkey('0', '0000');
 		ptkey('0', '0001');

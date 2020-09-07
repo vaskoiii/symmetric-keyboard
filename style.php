@@ -78,17 +78,17 @@ img {
 		position: absolute;
 		background: #ddd;
 		top: 192px;
-		left: 320px;	
+		left: 320px;
 		}
-		#ltm4 { <?
+		#ltm4 { <?php
 			if ($_GET['texture'] == 'vhex') { ?> 
-				background: #ccc;<?
+				background: #ccc;<?php
 			}
 			else { ?> 
 				background: url('/vfence/export/m4.png');
 				background-size: 56px 56px;
 				background-position: 5% -5%;
-				opacity: .2; <?
+				opacity: .2; <?php
 			} ?> 
 			position: absolute; }
 		#lcm4 {
@@ -117,16 +117,16 @@ img {
 		left: 0px;
 		background: #ddd;
 		}
-		#rtm4 { <?
+		#rtm4 { <?php
 			if ($_GET['texture'] == 'vhex') { ?> 
-				background: #ccc;<?
+				background: #ccc;<?php
 			}
 			else { ?> 
 				background: url('/vfence/export/m4.png');
 				background-size: 56px 56px;
 				background-position: 5% -5%;
 				transform: scaleX(-1);
-				opacity: .2; <?
+				opacity: .2; <?php
 			} ?> 
 			position: absolute; }
 		#rcm4 {
@@ -203,7 +203,7 @@ img {
 	position: relative;
 	width: 384px;
 	height: 448px;
-	display: inline-block; } <?
+	display: inline-block; } <?php
 	print_akey(256, 64, '1', '0001');
 	print_akey(192, 64, '1', '0010');
 	print_akey(128, 64, '1', '0011');
@@ -237,20 +237,20 @@ img {
 		transform: scaleX(-1);
 		opacity: .2;
 	} 
-	<? # todo dry ?>
-	#rkm1 { <?
+	<?php # todo dry ?>
+	#rkm1 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m1.png');<?
+			background: url('/vfence/export/m1.png');<?php
 		} ?> 
 	}
-	#rkm2 { <?
+	#rkm2 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m2.png');<?
+			background: url('/vfence/export/m2.png');<?php
 		} ?> 
 	}
-	#rkm3 { <?
+	#rkm3 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m3.png');<?
+			background: url('/vfence/export/m3.png');<?php
 		} ?> 
 	}
 #left_base {
@@ -266,7 +266,7 @@ img {
 	position: relative;
 	width: 384px; /* width of 6 squares */
 	height: 448px; /* height  of 7 squares */
-	display: inline-block; } <?
+	display: inline-block; } <?php
 	print_akey(64, 64, '0', '0001');
 	print_akey(128, 64, '0', '0010');
 	print_akey(192, 64, '0', '0011');
@@ -292,20 +292,20 @@ img {
 	#lkm3 {
 		left: 288px;
 		top: 384px; }
-	<? # todo dry ?>
-	#lkm1 { <?
+	<?php # todo dry ?>
+	#lkm1 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m1.png');<?
+			background: url('/vfence/export/m1.png');<?php
 		} ?> 
 	}
-	#lkm2 { <?
+	#lkm2 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m2.png');<?
+			background: url('/vfence/export/m2.png');<?php
 		} ?> 
 	}
-	#lkm3 { <?
+	#lkm3 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m3.png');<?
+			background: url('/vfence/export/m3.png');<?php
 		} ?> 
 	}
 	#lkm1, #lkm2, #lkm3 {
@@ -317,14 +317,14 @@ img {
 	#r09, #l09, #r10, #l10, #r11, #l11, #r12, #l12,
 	#r13, #l13, #r14, #l14, #r15, #l15, #r00, #l00,
 	#rkm1, #lkm1, #rkm2, #lkm2, #rkm3, #lkm3, #rlmxx {
-		opacity: .2; <?
+		opacity: .2; <?php
 		if ($_GET['texture'] == 'vhex') { ?> 
 			background-size: 24px 24px;
-			background-position:  50% 75%;<?
+			background-position:  50% 75%;<?php
 		}
 		else { ?> 
 			background-size: 56px 56px;
-			background-position: 5% -5%;<?
+			background-position: 5% -5%;<?php
 		}
 		if (in_array($_GET['keymap'], $config['nobraille']))
 			echo "\n" . 'display: none;'; ?> }

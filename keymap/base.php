@@ -1,4 +1,4 @@
-<?
+<?php
 # author: vaskoiii
 # description: base keymap to demonstrate the braille and ability to use images as keypresses
 
