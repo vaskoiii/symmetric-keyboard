@@ -184,7 +184,7 @@ function ptoption($s1) {
 	# 320/480 = 2/3
 	# rounding up seems to work fine
 	?>
-	<meta name="viewport" content="width=device-width, initial-scale=.7">
+	<meta name="viewport" content="width=480">
 	<title>Symmetric Keyboard</title><?php
 	# php to use php variables
 	include('style.php'); ?> 
