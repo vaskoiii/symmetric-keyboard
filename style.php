@@ -72,6 +72,7 @@ img {
 		}
 	#ltm1, #ltm2, #ltm3, #ltm4, #lcm1, #lcm2, #lcm3, #lcm4 {
 		position: absolute;
+		border: none;
 	}
 	#lkm4 {
 		border: 1px dotted;
