@@ -153,6 +153,8 @@ function ptclear($s1) {
 			document.execCommand('cut');
 			did('output_text').innerHTML = '';
 		}
+		// prevent on-screen keyboard popup from the operating system
+		did('noos_keyboard').focus();
 		did('output').innerHTML = '';
 		e.preventDefault()
 	}, false) <?php
@@ -331,6 +333,7 @@ else
 		right: 0px;
 		}
 </style>
+<a href="#" id="noos_keyboard"></a>
 <div id="left_foot">foot<br />&#8644;</div>
 <div id="right_foot">foot<br />&#8646;</div>
 <div id="both">
