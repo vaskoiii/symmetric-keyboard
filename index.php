@@ -400,7 +400,7 @@ else
 	}
 </script>
 
-<span id="option_block" style="margin-top: 90px; margin-bottom: 30px; display: block;">
+<span id="option_block" style="margin-top: 30px; margin-bottom: 30px; display: block;">
 	<script>
 		function choose_keyboard($mode) {
 			switch ($mode) {
