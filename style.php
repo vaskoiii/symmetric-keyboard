@@ -141,7 +141,9 @@ img {
 #both {
 	border: 1px;
 	margin: 0px auto;
-	height: 498px;
+	height: 502px;
+	/* stop browser from resizing on choose_position(); */
+	overflow: hidden;
 	/* controls the separation in between left and right keypad */
 	width: 1000px; }
 #output_anchor {

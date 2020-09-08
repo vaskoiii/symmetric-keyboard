@@ -12,7 +12,8 @@ $vibrate = 50; # vibrate time in ms
 
 $config['keymap'] = array(
 	# first keymap listed is the default
-	'qwerty',
+	'filler', # navigation keys grouped together && consistent edges
+	'qwerty', # original hardware version (no duplicate keys)
 	'base',
 	# to create a new keymap copy keymap/template.php to keymap/mY_kEyMaP.php edit and add below with:
 	# 'mY_kEyMaP',

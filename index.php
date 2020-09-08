@@ -184,7 +184,7 @@ function ptoption($s1) {
 	# 320/480 = 2/3
 	# rounding up seems to work fine
 	?>
-	<meta name="viewport" content="width=480">
+	<meta name="viewport" content="width=492">
 	<title>Symmetric Keyboard</title><?php
 	# php to use php variables
 	include('style.php'); ?> 
@@ -397,7 +397,7 @@ else
 	}
 </script>
 
-<span id="option_block" style="margin-top: 60px; margin-bottom: 30px; display: block;">
+<span id="option_block" style="margin-top: 90px; margin-bottom: 30px; display: block;">
 	<script>
 		function choose_keyboard($mode) {
 			switch ($mode) {
