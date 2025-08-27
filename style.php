@@ -62,7 +62,7 @@ img {
 		color: #777; }
 	#loption {
 		position: absolute;
-		top: 320px;
+		top: 280px;
 		left: 320px;
 		}
 	#lclear {
@@ -100,7 +100,7 @@ img {
 			position: absolute; }
 	#roption {
 		position: absolute;
-		top: 320px;
+		top: 280px;
 		left: 0px;
 		}
 	#rclear {
@@ -224,12 +224,15 @@ img {
 	print_akey(32, 128, '1', '1111');
 	print_akey(64, 192, '1', '0000'); ?> 
 	#rkm1 {
-		left: 96px;
-		top: 256px; }
+		rotate: -30deg;
+		left: 110px;
+		top: 264px; }
 	#rkm2 {
+		rotate: -45deg;
 		left: 64px;
 		top: 320px; }
 	#rkm3 {
+		rotate: -60deg;
 		left: 32px;
 		top: 384px; }
 	#r01, #r02, #r03, #r04,
@@ -253,7 +256,7 @@ img {
 	}
 	#rkm3 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m3.png');<?php
+			background: url('/vfence/export/m3v2.png');<?php
 		} ?> 
 	}
 #left_base {
@@ -287,12 +290,15 @@ img {
 	print_akey(288, 128, '0', '1111');
 	print_akey(256, 192, '0', '0000'); ?> 
 	#lkm1 {
-		left: 224px;
-		top: 256px; }
+		rotate: 30deg;
+		left: 210px;
+		top: 264px; }
 	#lkm2 {
+		rotate: 45deg;
 		left: 256px;
 		top: 320px; }
 	#lkm3 {
+		rotate: 60deg;
 		left: 288px;
 		top: 384px; }
 	<?php # todo dry ?>
@@ -308,7 +314,7 @@ img {
 	}
 	#lkm3 { <?php
 		if ($_GET['texture'] != 'vhex') { ?> 
-			background: url('/vfence/export/m3.png');<?php
+			background: url('/vfence/export/m3v2.png');<?php
 		} ?> 
 	}
 	#lkm1, #lkm2, #lkm3 {
